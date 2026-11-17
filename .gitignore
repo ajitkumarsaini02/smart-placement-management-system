@@ -48,6 +48,7 @@ lerna-debug.log*
 *.swp
 
 # AI Guidelines & Skills Repo
+skills/
 andrej-karpathy-skills/
 CLAUDE.md
 
