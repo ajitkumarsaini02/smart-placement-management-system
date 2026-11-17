@@ -38,6 +38,7 @@ lerna-debug.log*
 .vscode/*
 !.vscode/extensions.json
 .idea/
+.cursor/
 *.suo
 *.ntvs*
 *.njsproj
@@ -45,6 +46,10 @@ lerna-debug.log*
 *.sw?
 *.swo
 *.swp
+
+# AI Guidelines & Skills Repo
+andrej-karpathy-skills/
+CLAUDE.md
 
 # OS generated files
 .DS_Store
