@@ -2,7 +2,6 @@
 
 A premium, modern, fully responsive **LIGHT-THEME ONLY** SaaS landing page built for college placement cells, students, and corporate recruiters.
 
-Developed as a flagship **5th Semester B.Tech College Presentation Project**.
 
 ---
 
@@ -79,7 +78,7 @@ Developed as a flagship **5th Semester B.Tech College Presentation Project**.
 - **Vite 8**
 - **Tailwind CSS v4**
 - **Lucide React**
-- **Plus Jakarta Sans** typography
+- **Inter** typography
 
 ---
 

@@ -33,14 +33,14 @@ const Features = ({ onSelectFeature }) => {
   };
 
   return (
-    <section id="features" className="py-20 sm:py-28 bg-white relative">
+    <section id="features" className="py-12 sm:py-16 md:py-20 bg-white relative">
       {/* Decorative background circle */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-50/60 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200/80">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Comprehensive Placement Suite</span>

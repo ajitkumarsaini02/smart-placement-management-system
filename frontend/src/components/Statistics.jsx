@@ -11,11 +11,11 @@ const Statistics = () => {
   };
 
   return (
-    <section className="py-14 sm:py-20 bg-slate-50/80 border-y border-slate-200/80 relative">
+    <section className="py-10 sm:py-14 bg-slate-50/80 border-y border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading & Label */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100/70 text-blue-700 mb-2">
               <TrendingUp className="w-3.5 h-3.5" />

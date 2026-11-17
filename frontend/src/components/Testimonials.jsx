@@ -4,11 +4,11 @@ import { testimonialsData } from '../data/placementData';
 
 const Testimonials = () => {
   return (
-    <section className="py-20 sm:py-28 bg-white border-t border-slate-200/80 relative">
+    <section className="py-12 sm:py-16 md:py-20 bg-white border-t border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Success Stories</span>

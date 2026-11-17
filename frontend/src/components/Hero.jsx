@@ -16,7 +16,7 @@ const Hero = ({ onOpenOpportunities }) => {
   };
 
   return (
-    <section id="home" className="relative pt-6 sm:pt-8 md:pt-10 pb-16 md:pb-24 overflow-hidden bg-white">
+    <section id="home" className="relative pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12 overflow-hidden bg-white">
       {/* Background Subtle Mesh and Patterns */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
       

@@ -49,11 +49,11 @@ const WhyChooseUs = ({ onOpenDemo }) => {
   ];
 
   return (
-    <section id="about" className="py-20 sm:py-28 bg-slate-50/70 border-t border-slate-200/80 relative">
+    <section id="about" className="py-12 sm:py-16 md:py-20 bg-slate-50/70 border-t border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-100/70 text-blue-700">
             <Sparkles className="w-3.5 h-3.5" />
             <span>The Modern Advantage</span>

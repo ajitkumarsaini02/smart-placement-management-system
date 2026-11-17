@@ -10,11 +10,11 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-20 sm:py-28 bg-slate-50/70 border-t border-slate-200/80 relative">
+    <section className="py-12 sm:py-16 md:py-20 bg-slate-50/70 border-t border-slate-200/80 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-100/70 text-blue-700">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Frequently Asked Questions</span>

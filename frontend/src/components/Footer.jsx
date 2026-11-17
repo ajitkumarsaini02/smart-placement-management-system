@@ -32,7 +32,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Enterprise-grade campus placement tracking platform built for 5th Semester B.Tech College Presentation.
+              Enterprise-grade campus placement management and recruitment tracking platform for students, universities, and corporate recruiters.
             </p>
           </div>
 
@@ -73,7 +73,7 @@ const Footer = () => {
           <div className="space-y-2">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">Drive Schedule</h4>
             <div className="p-3 bg-teal-50/70 rounded-xl border border-teal-200/60 text-xs text-slate-700">
-              <span className="font-semibold text-teal-800">Placement Cycle 2026:</span> Top Dream Tier-1 recruiters conducting campus drives this semester.
+              <span className="font-semibold text-teal-800">Placement Cycle 2026:</span> Top Dream Tier-1 recruiters actively conducting on-campus recruitment drives.
             </div>
           </div>
 

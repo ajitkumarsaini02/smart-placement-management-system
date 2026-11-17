@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles, GraduationCap, ShieldCheck, CheckCircle2 } from '
 
 const CTA = ({ onOpenDemo }) => {
   return (
-    <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 bg-white relative overflow-hidden">
       {/* Background Decorative Gradient & Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-blue-100/70 via-sky-100/60 to-blue-50/40 rounded-full blur-3xl pointer-events-none -z-10" />

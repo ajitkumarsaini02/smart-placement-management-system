@@ -13,11 +13,11 @@ const TopRecruiters = () => {
       : recruitersData.filter((r) => r.category.toLowerCase().includes(selectedCategory.toLowerCase()));
 
   return (
-    <section id="recruiters" className="py-20 sm:py-28 bg-white border-t border-slate-200/80 relative">
+    <section id="recruiters" className="py-12 sm:py-16 md:py-20 bg-white border-t border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
             <Building2 className="w-3.5 h-3.5" />
             <span>Top Tier Hiring Partners</span>
@@ -33,7 +33,7 @@ const TopRecruiters = () => {
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
           {categories.map((cat) => (
             <button
               key={cat}

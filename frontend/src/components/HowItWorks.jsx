@@ -18,11 +18,11 @@ const HowItWorks = ({ onOpenDemo }) => {
   const stepIcons = [UserCheck, Compass, Send, Trophy];
 
   return (
-    <section id="how-it-works" className="py-20 sm:py-28 bg-slate-50/70 border-t border-slate-200/80 relative">
+    <section id="how-it-works" className="py-12 sm:py-16 md:py-20 bg-slate-50/70 border-t border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-100/70 text-blue-700">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Smooth 4-Step Process</span>
@@ -38,7 +38,7 @@ const HowItWorks = ({ onOpenDemo }) => {
         </div>
 
         {/* 4 Connected Step Cards (Desktop connected line, mobile stack) */}
-        <div className="relative mb-16">
+        <div className="relative mb-10">
           {/* Subtle horizontal connecting line on desktop */}
           <div className="hidden lg:block absolute top-1/2 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-blue-300 via-sky-300 to-emerald-300 -translate-y-12 z-0" />
 
