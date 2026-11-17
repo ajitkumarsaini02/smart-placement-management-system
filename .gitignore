@@ -2,6 +2,11 @@
 node_modules/
 .pnp
 .pnp.js
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
 
 # Production build artifacts
 dist/
@@ -15,6 +20,10 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Database
+*.sqlite3
+db.sqlite3
 
 # Logs
 logs/
