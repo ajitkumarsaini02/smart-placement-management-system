@@ -1,13 +1,12 @@
 import React from 'react';
 import { 
   ArrowRight, 
-  ChevronRight, 
   CheckCircle,
   Compass
 } from 'lucide-react';
 import DashboardPreview from './DashboardPreview';
 
-const Hero = ({ onOpenDemo, onOpenOpportunities }) => {
+const Hero = ({ onOpenOpportunities }) => {
   const scrollToFeatures = (e) => {
     e.preventDefault();
     const target = document.getElementById('features');
@@ -17,7 +16,7 @@ const Hero = ({ onOpenDemo, onOpenOpportunities }) => {
   };
 
   return (
-    <section id="home" className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-white">
+    <section id="home" className="relative pt-6 sm:pt-8 md:pt-10 pb-16 md:pb-24 overflow-hidden bg-white">
       {/* Background Subtle Mesh and Patterns */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
       
@@ -26,21 +25,6 @@ const Hero = ({ onOpenDemo, onOpenOpportunities }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Top Announcement Pill */}
-        <div className="flex justify-center mb-6">
-          <div 
-            onClick={onOpenDemo}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 text-blue-700 text-xs sm:text-sm font-semibold shadow-2xs hover:bg-blue-100/70 transition-all cursor-pointer"
-          >
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
-            </span>
-            <span className="font-semibold text-blue-800">New: 2026 Campus Placement Cycle is Now Active</span>
-            <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
-          </div>
-        </div>
-
         {/* Hero Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           

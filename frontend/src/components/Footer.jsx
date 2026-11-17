@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { GraduationCap, Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
@@ -7,53 +6,64 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'Features', href: '#features' },
+    { name: 'How It Works', href: '#how-it-works' },
+    { name: 'Top Recruiters', href: '#recruiters' },
+    { name: 'Why PlaceTrack', href: '#about' },
+    { name: 'Contact Cell', href: '#contact' },
+  ];
+
   return (
-    <footer className="w-full bg-[#142233] text-slate-300 border-t border-slate-700/60 mt-auto">
+    <footer id="contact" className="w-full bg-white text-slate-600 border-t border-slate-200/90 mt-auto">
       {/* Upper Footer Links */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-700/60">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-200">
           
           {/* Brand info */}
           <div className="space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-xs">
-                <GraduationCap className="w-5 h-5" />
+              <div className="w-9 h-9 rounded-xl bg-teal-600 flex items-center justify-center text-white shadow-xs">
+                <GraduationCap className="w-5 h-5 stroke-[2.2]" />
               </div>
-              <span className="text-xl font-bold text-white">
-                Place<span className="text-blue-400">Track</span>
+              <span className="text-xl font-bold text-slate-900">
+                Place<span className="text-teal-600">Track</span>
               </span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-500 leading-relaxed">
               Enterprise-grade campus placement tracking platform built for 5th Semester B.Tech College Presentation.
             </p>
           </div>
 
-          {/* Navigation Links */}
+          {/* Quick Navigation Links */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Platform Routes</h4>
-            <ul className="space-y-1.5 text-xs text-slate-400">
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">Home Landing Page</Link></li>
-              <li><Link to="/drives" className="hover:text-blue-400 transition-colors">Campus Placement Drives</Link></li>
-              <li><Link to="/myapplications" className="hover:text-blue-400 transition-colors">My Applications</Link></li>
-              <li><Link to="/myprofile" className="hover:text-blue-400 transition-colors">Student Profile & CGPA</Link></li>
-              <li><Link to="/settings" className="hover:text-blue-400 transition-colors">Settings & Alerts</Link></li>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">Quick Navigation</h4>
+            <ul className="space-y-1.5 text-xs text-slate-600">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="hover:text-teal-600 transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact cell */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Placement Cell Help</h4>
-            <ul className="space-y-1.5 text-xs text-slate-400">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">Placement Cell Help</h4>
+            <ul className="space-y-1.5 text-xs text-slate-600">
               <li className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                 <span>placements@placetrack.edu</span>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                 <span>+1 (555) 382-7200</span>
               </li>
               <li className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                 <span>Block IV, TPO Complex</span>
               </li>
             </ul>
@@ -61,23 +71,23 @@ const Footer = () => {
 
           {/* University note */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Drive Schedule</h4>
-            <div className="p-3 bg-slate-800/80 rounded-xl border border-slate-700 text-xs text-slate-300">
-              <span className="font-semibold text-emerald-400">Phase-1 Live:</span> Top Dream Tier 1 Recruiters conducting aptitude & tech rounds this week.
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">Drive Schedule</h4>
+            <div className="p-3 bg-teal-50/70 rounded-xl border border-teal-200/60 text-xs text-slate-700">
+              <span className="font-semibold text-teal-800">Placement Cycle 2026:</span> Top Dream Tier-1 recruiters conducting campus drives this semester.
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Banner with User's signature */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <h2 className="text-sm font-semibold text-slate-200 text-center sm:text-left">
-            Design and Developed by <span className="text-rose-500">❤️</span> Ajit Kumar Saini &copy; 2026
+        {/* Bottom Banner */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <h2 className="text-xs font-semibold text-slate-600 text-center sm:text-left">
+            &copy; 2026 PlaceTrack Inc. Smart Placement Management &amp; Tracking Platform. All rights reserved.
           </h2>
 
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer border border-slate-700"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 text-slate-700 hover:text-teal-600 hover:border-teal-300 transition-colors cursor-pointer border border-slate-200 shadow-2xs font-medium"
           >
             <span>Back to Top</span>
             <ArrowUp className="w-3.5 h-3.5" />
