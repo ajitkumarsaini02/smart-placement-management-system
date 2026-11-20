@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Reusable StatCard component accepting props for number, label, and description

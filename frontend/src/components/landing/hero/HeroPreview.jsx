@@ -1,5 +1,5 @@
-import React from 'react';
-import { Briefcase, Users, TrendingUp } from 'lucide-react';
+import React from "react";
+import { Briefcase, Users, TrendingUp } from "lucide-react";
 
 export const HeroPreview = () => (
   <div className="hero-dashboard-preview">
@@ -13,7 +13,9 @@ export const HeroPreview = () => (
           <span className="dot dot-expand" />
         </div>
         <div className="window-url-bar">
-          <span className="window-url-text">app.placetrack.edu/tpo/dashboard</span>
+          <span className="window-url-text">
+            app.placetrack.edu/tpo/dashboard
+          </span>
         </div>
         <div className="window-live-status">
           <span className="pulse-dot" />
@@ -24,23 +26,31 @@ export const HeroPreview = () => (
         <div className="portal-header-greeting">
           <div>
             <h4 className="portal-greeting-title">TPO Command Center</h4>
-            <p className="portal-greeting-sub">Academic Year 2025–2026 • National Institute of Tech</p>
+            <p className="portal-greeting-sub">
+              Academic Year 2025–2026 • National Institute of Tech
+            </p>
           </div>
           <span className="badge-live-tag">● Season Active</span>
         </div>
         <div className="mock-stat-cards-grid">
           <div className="mock-stat-card">
-            <span className="mock-stat-label"><Briefcase size={13} /> Active Drives</span>
+            <span className="mock-stat-label">
+              <Briefcase size={13} /> Active Drives
+            </span>
             <span className="mock-stat-val text-emerald">24 Drives</span>
             <span className="mock-stat-trend">↑ 8 this week</span>
           </div>
           <div className="mock-stat-card">
-            <span className="mock-stat-label"><Users size={13} /> Placed Students</span>
+            <span className="mock-stat-label">
+              <Users size={13} /> Placed Students
+            </span>
             <span className="mock-stat-val">842 / 920</span>
             <span className="mock-stat-trend text-emerald">91.5% Placed</span>
           </div>
           <div className="mock-stat-card">
-            <span className="mock-stat-label"><TrendingUp size={13} /> Highest Package</span>
+            <span className="mock-stat-label">
+              <TrendingUp size={13} /> Highest Package
+            </span>
             <span className="mock-stat-val text-emerald">₹ 52.0 LPA</span>
             <span className="mock-stat-trend">Avg: ₹ 14.8 LPA</span>
           </div>
@@ -48,7 +58,8 @@ export const HeroPreview = () => (
         <div className="mock-activity-bar">
           <span className="activity-pulse-icon" />
           <span className="activity-bar-text">
-            <strong>Microsoft</strong> scheduled Technical Round 2 interviews for 18 CSE students
+            <strong>Microsoft</strong> scheduled Technical Round 2 interviews
+            for 18 CSE students
           </span>
           <span className="activity-time">Just now</span>
         </div>

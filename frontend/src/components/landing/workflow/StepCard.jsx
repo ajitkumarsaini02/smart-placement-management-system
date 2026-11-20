@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Reusable StepCard component with circular number badge and step description

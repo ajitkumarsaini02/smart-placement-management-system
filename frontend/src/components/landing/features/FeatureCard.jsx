@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Reusable FeatureCard component with light mint icon box and emerald styling

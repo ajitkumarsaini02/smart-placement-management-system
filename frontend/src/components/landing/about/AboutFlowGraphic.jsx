@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const AboutFlowGraphic = () => (
   <div className="about-visual-column">
@@ -22,7 +22,9 @@ export const AboutFlowGraphic = () => (
           <div className="node-icon-circle">💼</div>
           <div className="node-text">
             <div className="node-title">PlaceTrack Platform</div>
-            <div className="node-sub">Smart Coordination & Verification Hub</div>
+            <div className="node-sub">
+              Smart Coordination & Verification Hub
+            </div>
           </div>
         </div>
         <div className="workflow-arrow">

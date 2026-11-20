@@ -1,5 +1,5 @@
-import React from 'react';
-import coreModulesData from './coreFeaturesData';
+import React from "react";
+import coreModulesData from "./coreFeaturesData";
 
 const CoreFeatures = () => (
   <section className="section twelve-modules-section" id="modules">
@@ -11,7 +11,9 @@ const CoreFeatures = () => (
           <span className="text-primary">In One Unified Platform</span>
         </h2>
         <p className="section-description">
-          Comprehensive recruitment and automation tools built for modern placement cells — from recruiter onboarding to final accreditation reports.
+          Comprehensive recruitment and automation tools built for modern
+          placement cells — from recruiter onboarding to final accreditation
+          reports.
         </p>
       </div>
 

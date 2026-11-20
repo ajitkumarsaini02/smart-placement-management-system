@@ -1,6 +1,6 @@
-import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import Button from '../../common/Button';
+import React from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import Button from "../../common/Button";
 
 export const HeroContent = () => (
   <div className="hero-content">
@@ -15,10 +15,18 @@ export const HeroContent = () => (
       <span className="hero-title-highlight">Management Made Easy.</span>
     </h1>
     <p className="hero-description">
-      Manage recruiters, campus drives, job applications, interview rounds, placement tracking, student feedback and employer relationships from one centralised platform.
+      Manage recruiters, campus drives, job applications, interview rounds,
+      placement tracking, student feedback and employer relationships from one
+      centralised platform.
     </p>
     <div className="hero-actions">
-      <Button href="/login" variant="primary" size="lg" icon={<ArrowRight size={16} />} iconPosition="right">
+      <Button
+        href="/login"
+        variant="primary"
+        size="lg"
+        icon={<ArrowRight size={16} />}
+        iconPosition="right"
+      >
         Explore Live Platform
       </Button>
       <Button href="/login" variant="outline" size="lg">

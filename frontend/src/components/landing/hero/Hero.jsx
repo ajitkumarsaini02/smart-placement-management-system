@@ -1,6 +1,6 @@
-import React from 'react';
-import HeroContent from './HeroContent';
-import HeroPreview from './HeroPreview';
+import React from "react";
+import HeroContent from "./HeroContent";
+import HeroPreview from "./HeroPreview";
 
 const Hero = () => (
   <section id="hero" className="hero-section">

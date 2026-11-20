@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
-import workflowSteps from './workflowSteps';
+import React, { useState } from "react";
+import { ArrowRight } from "lucide-react";
+import workflowSteps from "./workflowSteps";
 
 const PlacementWorkflow = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -16,7 +16,8 @@ const PlacementWorkflow = () => {
             <span className="text-primary">In One Platform</span>
           </h2>
           <p className="section-description">
-            End-to-end placement workflow — from first recruiter contact to final offer letter.
+            End-to-end placement workflow — from first recruiter contact to
+            final offer letter.
           </p>
         </div>
 
@@ -25,7 +26,7 @@ const PlacementWorkflow = () => {
             <button
               key={idx}
               type="button"
-              className={`workflow-step-btn ${activeStep === idx ? 'step-active' : ''}`}
+              className={`workflow-step-btn ${activeStep === idx ? "step-active" : ""}`}
               onClick={() => setActiveStep(idx)}
             >
               <span className="workflow-step-num">{step.stepNumber}</span>
@@ -63,17 +64,26 @@ const PlacementWorkflow = () => {
               </div>
               <div className="visual-status-box">
                 <span className="status-label">Process Compliance</span>
-                <span className="status-badge-green">100% Digital &amp; Auditable</span>
+                <span className="status-badge-green">
+                  100% Digital &amp; Auditable
+                </span>
               </div>
               <div className="visual-progress-bar">
-                <div className="visual-progress-fill" style={{ width: `${((activeStep + 1) / workflowSteps.length) * 100}%` }} />
+                <div
+                  className="visual-progress-fill"
+                  style={{
+                    width: `${((activeStep + 1) / workflowSteps.length) * 100}%`,
+                  }}
+                />
               </div>
               <div className="visual-footer">
                 <span>Step {activeStep + 1} of 7</span>
                 <button
                   type="button"
                   className="visual-next-btn"
-                  onClick={() => setActiveStep((activeStep + 1) % workflowSteps.length)}
+                  onClick={() =>
+                    setActiveStep((activeStep + 1) % workflowSteps.length)
+                  }
                 >
                   Next Stage <ArrowRight size={14} />
                 </button>
