@@ -19,10 +19,10 @@
 
 ### 👥 Project Team Members
 
-| Name                 | University Roll Number | Section | Role                 |
-| :------------------- | :--------------------- | :------ | :------------------- |
-| **Ajit Kumar Saini** | `2400230100114`        | CSE-11  | Full-Stack Developer |
-| **Aditya Yadav**     | `2400320100103`        | CSE-11  | Full-Stack Developer |
+| Name                 | University Roll Number | Section |
+| :------------------- | :--------------------- | :------ |
+| **Ajit Kumar Saini** | `2400230100114`        | CSE-11  |
+| **Aditya Yadav**     | `2400320100103`        | CSE-11  |
 
 ---
 
