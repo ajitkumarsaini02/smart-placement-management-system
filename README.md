@@ -1,10 +1,10 @@
 # PlaceTrack – Smart Placement Management & Tracking System
 
 > **Tagline:** Your Career. Your Placement. One Smart Platform.  
-> **Course:** Full-Stack Web Development (B.Tech CSE Project)  
+> **Institution:** ABES Engineering College, Ghaziabad  
+> **Course:** Full-Stack Web Development (B.Tech CSE Project — 5th Semester)  
 > **Architecture:** Three-Tier Decoupled MERN Stack (MongoDB, Express.js, React.js, Node.js)  
 > **Design System:** Pure CSS3 (Emerald + Mint + Ivory Palette)  
-> **Live Deployment:** Vercel (Frontend) & Render (Backend) with MongoDB Atlas
 
 ---
 
@@ -112,7 +112,7 @@ Campus placement operations in most engineering colleges suffer from critical sy
 - **Styling:** Pure CSS3 (Emerald + Mint + Ivory design system, CSS Variables, Flexbox, CSS Grid)
 - **State Management:** React Context API (`AuthContext`, `useAuth`)
 - **Icons:** Lucide React
-- **Hosting:** Vercel (Configured with `vercel.json` SPA rewrites)
+- **Build Output:** Optimized Single Page Application bundle via Vite
 
 ### Backend
 
@@ -124,7 +124,7 @@ Campus placement operations in most engineering colleges suffer from critical sy
 - **Password Security:** `bcryptjs` (10 salt rounds)
 - **File Handling:** `multer` (PDF validation and 5MB threshold)
 - **Security Middleware:** `helmet`, `cors`, `express-rate-limit`
-- **Hosting:** Render (Configured with `render.yaml` Blueprint & automated health checks)
+- **Health Monitoring:** Centralized `/api/v1/health` system probe endpoint
 
 ---
 
@@ -144,18 +144,18 @@ Campus placement operations in most engineering colleges suffer from critical sy
 PlaceTrack employs a decoupled **Three-Tier Client-Server Architecture**:
 
 ```
-[ Frontend: React + Vite on Vercel ]
+[ Frontend: React 19 + Vite (Single Page Application) ]
                  │
-                 │ HTTPS REST API Requests (Authorization: Bearer <JWT>)
+                 │ HTTP/HTTPS REST API Requests (Authorization: Bearer <JWT>)
                  ▼
-[ Backend: Node.js + Express.js on Render ]
-  ├── Security Layer (Helmet, CORS *.vercel.app, RateLimiter)
+[ Backend: Node.js + Express.js REST API Server ]
+  ├── Security Layer (Helmet, CORS, RateLimiter)
   ├── Controllers (Auth, Student, Recruiter, TPO, Notifications)
   └── Backend Eligibility Engine (CGPA, Backlogs, Branch Matching)
                  │
                  │ Mongoose ODM
                  ▼
-[ Database: MongoDB Atlas Cloud ]
+[ Database: MongoDB Database (Local / Atlas Cloud) ]
   └── 9 Domain Collections with Compound Indexes
 ```
 
@@ -182,35 +182,15 @@ smart-placement-management-system/
 │   │   ├── routes/                  # AppRoutes, ProtectedRoute, RoleBasedRoute
 │   │   ├── services/                # Decoupled Axios services (api, auth, student, job, etc.)
 │   │   └── styles/                  # Pure CSS stylesheets (Emerald + Mint + Ivory)
-│   ├── vercel.json                  # Vercel SPA routing rewrite rules
 │   ├── .env.example                 # Frontend environment variables template
 │   └── vite.config.js               # Vite configuration
 │
-├── backend/                         # Express.js REST API Backend
-│   ├── src/
-│   │   ├── config/                  # MongoDB Mongoose connection
-│   │   ├── controllers/             # Business controllers (Auth, Student, Recruiter, TPO)
-│   │   ├── middleware/              # JWT protect, RBAC authorize, errorHandler, rateLimiter
-│   │   ├── models/                  # 9 Mongoose schemas (User, Student, Job, Application, etc.)
-│   │   ├── routes/                  # Express REST routes (/auth, /student, /recruiter, /tpo, etc.)
-│   │   ├── utils/                   # apiResponse, apiError, asyncHandler, passwordUtils
-│   │   ├── validators/              # Registration policy & input validators
-│   │   └── server.js                # Express app initialization, CORS & route mounting
-│   ├── uploads/resumes/             # Uploaded PDF resume storage (.gitkeep preserved)
-│   ├── .env.example                 # Backend environment variables template
-│   └── package.json                 # Backend scripts and dependencies
+├── docs/                            # Project Documentation
+│   └── system-design-document.md    # System Design Document
 │
-├── docs/                            # Comprehensive Project Documentation
-│   ├── project-overview.md          # Architectural breakdown & objectives
-│   ├── database-schema.md           # ER diagram, schema tables & indexes
-│   ├── api-documentation.md         # Full REST API specification
-│   ├── setup-guide.md               # Step-by-step local installation manual
-│   ├── vercel-render-deployment.md  # 5-minute live deployment guide
-│   └── viva-preparation.md          # 30 detailed viva Q&A for academic review
-│
-├── render.yaml                      # Render Infrastructure-as-Code Blueprint
-├── vercel.json                      # Root Vercel SPA fallback configuration
+├── PlaceTrack - System Design Document.docx  # Academic System Design Word Document
 ├── package.json                     # Monorepo runner scripts (start, build, dev)
+├── package-lock.json                # Locked dependency tree
 └── README.md                        # Master Project Documentation
 ```
 
@@ -227,26 +207,14 @@ smart-placement-management-system/
 ### 1. Install Dependencies
 
 ```bash
-# Install root monorepo runner
+# Install root dependencies
 npm install
 
-# Install all sub-workspaces
-npm run install:all
+# Install frontend dependencies
+npm run install:frontend
 ```
 
 ### 2. Environment Configuration
-
-**Backend (`backend/.env`):**
-
-```env
-PORT=5000
-HOST=0.0.0.0
-NODE_ENV=development
-MONGODB_URI=mongodb://127.0.0.1:27017/placetrack
-JWT_SECRET=your_jwt_secret_key_here
-JWT_EXPIRE=7d
-CLIENT_URL=http://localhost:5173
-```
 
 **Frontend (`frontend/.env`):**
 
@@ -259,33 +227,32 @@ VITE_API_BASE_URL=http://localhost:5000/api/v1
 
 ## 🚀 10. Run Commands
 
-### Run Everything Concurrently (Development)
+### Development Server
 
 ```bash
 npm run dev
 ```
 
-### Production Build & Run
+### Production Build & Preview
 
 ```bash
-# 1. Build frontend bundle
+# 1. Build frontend production bundle
 npm run build
 
-# 2. Run backend production server
-npm start
+# 2. Preview production build locally
+npm run preview
 ```
 
 ---
 
-## 🌐 11. Live Deployment (Vercel & Render)
+## 💻 11. Local Development & Build Verification
 
-PlaceTrack is pre-configured for instant zero-downtime deployment:
+The application is configured for seamless local development and production-ready bundling:
 
-- **Backend (Render):** Uses `render.yaml` with automatic Node runtime detection and `/api/v1/health` health checks.
-- **Frontend (Vercel):** Uses `frontend/vercel.json` and `vercel.json` for SPA rewrites to guarantee zero 404s on page refresh.
-- **Database:** Connects seamlessly to MongoDB Atlas cloud via `MONGODB_URI`.
-
-👉 Detailed instructions are documented in [docs/vercel-render-deployment.md](docs/vercel-render-deployment.md).
+- **Local Development Server:** Run `npm run dev` to launch the Vite development server with Hot Module Replacement (HMR).
+- **Production Bundle:** Run `npm run build` to generate an optimized, minified production build in `frontend/dist/`.
+- **Preview Production Build:** Run `npm run preview` to locally test and preview the production build output.
+- **Strict Code Quality & Linting:** Run `npm run lint:frontend` to verify code quality and style standards with oxlint.
 
 ---
 
@@ -304,12 +271,8 @@ PlaceTrack is pre-configured for instant zero-downtime deployment:
 
 ## 📄 13. Documentation Links
 
-- [Project Overview & Objectives](docs/project-overview.md)
-- [Database Schema & Collections](docs/database-schema.md)
-- [REST API Documentation](docs/api-documentation.md)
-- [Installation & Local Setup Guide](docs/setup-guide.md)
-- [Vercel & Render Deployment Guide](docs/vercel-render-deployment.md)
-- [Viva Voce Preparation & 30 Questions with Answers](docs/viva-preparation.md)
+- [System Design Document (Markdown)](docs/system-design-document.md)
+- [PlaceTrack System Design Document (Word Docx)](PlaceTrack%20-%20System%20Design%20Document.docx)
 
 ---
 
