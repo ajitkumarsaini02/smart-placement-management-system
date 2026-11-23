@@ -27,5 +27,8 @@ pnpm-debug.log*
 .idea/
 .DS_Store
 Thumbs.db
+
+# AI & Scratch artifacts
+scratch/
 *.tmp
 *.bak

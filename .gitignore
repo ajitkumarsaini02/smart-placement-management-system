@@ -38,6 +38,7 @@ dump/
 .vscode/*
 !.vscode/extensions.json
 .idea/
+.cursor/
 .DS_Store
 Thumbs.db
 ehthumbs.db
@@ -45,3 +46,8 @@ ehthumbs.db
 *.swo
 *.tmp
 *.bak
+
+# Local AI / Skills tooling
+andrej-karpathy-skills/
+skills/
+CLAUDE.md
