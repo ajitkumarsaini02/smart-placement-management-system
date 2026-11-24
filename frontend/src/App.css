@@ -30,7 +30,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 108px; /* Offset for fixed top announcement bar + navbar */
+  padding-top: 0;
 }
 
 .main-content {
@@ -182,7 +182,7 @@
    3. Fixed Navbar & Mobile Menu (Navbar.jsx)
    -------------------------------------------------------------------------- */
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -2731,7 +2731,7 @@
 }
 
 .site-header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -2832,7 +2832,7 @@
 /* MOBILE (320px – 767px) */
 @media (max-width: 767px) {
   .home-container {
-    padding-top: 100px;
+    padding-top: 0;
   }
   .section {
     padding: 52px 16px;
