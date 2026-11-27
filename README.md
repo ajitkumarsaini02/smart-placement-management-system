@@ -43,6 +43,18 @@
 
 For evaluation, grading, and testing of all role-specific workflows, pre-configured accounts are available:
 
+### 👤 Mandatory FSD Submission Credentials
+- **Admin Username:** `admin@placetrack.com`
+- **Admin Password:** `Password@123`
+- **Student Username:** `student@placetrack.com`
+- **Student Password:** `Password@123`
+- **TPO Username:** `tpo@placetrack.com`
+- **TPO Password:** `Password@123`
+- **Recruiter Username:** `recruiter@placetrack.com`
+- **Recruiter Password:** `Password@123`
+
+### 📋 Role-Based Access Matrix
+
 | User Role | Username / Email | Password | Access Level & Key Features |
 | :--- | :--- | :--- | :--- |
 | **👑 Super Admin** | `admin@placetrack.com` | `Password@123` | Institutional Audit, TPO Master Controls, University Governance |
