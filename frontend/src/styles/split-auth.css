@@ -1,0 +1,588 @@
+/* ==========================================================================
+   PlaceTrack Split-Screen Authentication Styles (split-auth.css)
+   Exact match to the design system: Emerald + Mint + Ivory
+   High-Fidelity, 0 Mobile Overflow, CSS Variables Aligned
+   ========================================================================== */
+
+.split-auth-page {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-bg-ivory, #FFFEF7);
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT SHOWCASE PANEL (Rich Dark Forest Emerald)
+   -------------------------------------------------------------------------- */
+.split-auth-left {
+  background: linear-gradient(165deg, #063D2E 0%, #064E3B 45%, #032A1F 100%);
+  color: var(--color-white, #FFFFFF);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 52px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 4px 0 24px rgba(6, 78, 59, 0.15);
+}
+
+/* Subtle background accent mint glow */
+.split-auth-left::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(167, 243, 208, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(50px);
+}
+
+.split-auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  z-index: 2;
+  width: fit-content;
+}
+
+.split-brand-badge {
+  width: 36px;
+  height: 36px;
+  background-color: #032A1F;
+  border: 1.5px solid var(--color-mint, #A7F3D0);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-mint, #A7F3D0);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.split-brand-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-white, #FFFFFF);
+  letter-spacing: -0.02em;
+}
+
+.split-brand-highlight {
+  color: var(--color-mint, #A7F3D0);
+}
+
+.split-showcase-main {
+  margin: auto 0;
+  padding: 40px 0;
+  z-index: 2;
+}
+
+.showcase-headline {
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-white, #FFFFFF);
+  letter-spacing: -0.035em;
+  margin: 0 0 20px 0;
+}
+
+.showcase-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-soft-mint, #D1FAE5);
+  line-height: 1.5;
+  margin: 0 0 44px 0;
+  font-weight: 400;
+}
+
+.showcase-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.showcase-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-bg-ivory, #FFFEF7);
+}
+
+.stat-emoji {
+  font-size: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Translucent Bottom Widget */
+.showcase-bottom-widget {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(167, 243, 208, 0.22);
+  border-radius: 16px;
+  padding: 22px 24px;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+.widget-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background-color: rgba(167, 243, 208, 0.22);
+  color: var(--color-mint, #A7F3D0);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.widget-description {
+  font-size: 0.9rem;
+  color: var(--color-soft-mint, #D1FAE5);
+  margin: 12px 0 0 0;
+  line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT AUTH PANEL (Warm Ivory & Pure White Cards)
+   -------------------------------------------------------------------------- */
+.split-auth-right {
+  background-color: var(--color-bg-ivory, #FFFEF7);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 48px 48px 28px 48px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.split-auth-card-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: auto 0;
+}
+
+/* Back to Home Top Bar */
+.split-auth-top-bar {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+}
+
+.auth-back-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #64756C);
+  text-decoration: none;
+  padding: 6px 14px;
+  background-color: var(--color-white, #FFFFFF);
+  border: 1px solid var(--color-border, #E3EDE6);
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.auth-back-home-link:hover {
+  color: var(--color-primary, #047857);
+  border-color: var(--color-primary, #047857);
+  background-color: var(--color-light-mint, #ECFDF5);
+  transform: translateX(-3px);
+}
+
+.auth-back-home-bottom {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.auth-back-to-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #64756C);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.auth-back-to-home-btn:hover {
+  color: var(--color-primary, #047857);
+  text-decoration: underline;
+}
+
+.split-auth-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.split-auth-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary, #172B24);
+  letter-spacing: -0.025em;
+  margin: 0 0 10px 0;
+}
+
+.split-auth-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary, #64756C);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   ROLE SELECTION CARDS
+   -------------------------------------------------------------------------- */
+.role-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.role-card-button {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  border: 1.5px solid var(--color-border, #E3EDE6);
+  border-radius: 18px;
+  background-color: var(--color-white, #FFFFFF);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.role-card-button:hover {
+  border-color: var(--color-primary, #047857);
+  background-color: var(--color-bg-secondary, #F7FAF7);
+  box-shadow: 0 10px 28px rgba(4, 120, 87, 0.12);
+  transform: translateY(-2px);
+}
+
+.role-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.role-icon-box.mint {
+  background-color: var(--color-light-mint, #ECFDF5);
+  color: var(--color-primary, #047857);
+  border: 1px solid var(--color-mint, #A7F3D0);
+}
+
+.role-icon-box.emerald {
+  background-color: var(--color-primary, #047857);
+  color: var(--color-white, #FFFFFF);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(4, 120, 87, 0.25);
+}
+
+.role-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.role-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #172B24);
+  margin: 0;
+}
+
+.role-tagline {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, #64756C);
+  margin: 0;
+}
+
+/* Super Admin Link */
+.super-admin-row {
+  margin-top: 36px;
+  text-align: center;
+}
+
+.super-admin-link-btn {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary-hover, #065F46);
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.super-admin-link-btn:hover {
+  color: var(--color-primary, #047857);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   ROLE LOGIN FORM (Step 2)
+   -------------------------------------------------------------------------- */
+.form-top-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-to-home-corner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #64756C);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+
+.back-to-home-corner-link:hover {
+  color: var(--color-primary, #047857);
+  background-color: var(--color-light-mint, #ECFDF5);
+}
+
+.back-to-roles-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #64756C);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.back-to-roles-btn:hover {
+  color: var(--color-primary, #047857);
+  background-color: var(--color-light-mint, #ECFDF5);
+}
+
+.active-role-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background-color: var(--color-light-mint, #ECFDF5);
+  color: var(--color-dark-green, #064E3B);
+  border: 1px solid var(--color-mint, #A7F3D0);
+}
+
+.demo-autofill-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background-color: var(--color-light-mint, #ECFDF5);
+  border: 1px dashed var(--color-primary, #047857);
+  border-radius: 10px;
+  color: var(--color-dark-green, #064E3B);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.demo-autofill-btn:hover {
+  background-color: var(--color-soft-mint, #D1FAE5);
+  border-style: solid;
+}
+
+.password-input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 14px;
+  top: 38px;
+  background: none;
+  border: none;
+  color: var(--color-text-muted, #94A39A);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.15s;
+}
+
+.password-toggle-btn:hover {
+  color: var(--color-primary, #047857);
+}
+
+.login-form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 0 16px 0;
+  font-size: 0.85rem;
+}
+
+.remember-me-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-secondary, #64756C);
+  cursor: pointer;
+}
+
+.login-form-submit {
+  margin-top: 8px;
+}
+
+.form-register-prompt {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary, #64756C);
+}
+
+.form-register-link {
+  color: var(--color-primary, #047857);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.form-register-link:hover {
+  color: var(--color-primary-hover, #065F46);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   SPLIT AUTH FOOTER
+   -------------------------------------------------------------------------- */
+.split-auth-footer {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  color: var(--color-text-muted, #94A39A);
+  font-size: 0.82rem;
+  margin-top: auto;
+  border-top: 1px solid var(--color-border, #E3EDE6);
+  box-sizing: border-box;
+}
+
+.split-footer-links {
+  display: flex;
+  gap: 18px;
+}
+
+.split-footer-link {
+  color: var(--color-text-secondary, #64756C);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.split-footer-link:hover {
+  color: var(--color-primary, #047857);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE LAYOUT (< 1024px & Mobile)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .split-auth-page {
+    grid-template-columns: 44% 56%;
+  }
+  .split-auth-left {
+    padding: 48px 36px;
+  }
+  .split-auth-right {
+    padding: 40px 32px 24px 32px;
+  }
+}
+
+@media (max-width: 860px) {
+  .split-auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .split-auth-left {
+    padding: 36px 24px;
+  }
+
+  .split-showcase-main {
+    margin: 20px 0;
+    padding: 10px 0;
+  }
+
+  .showcase-headline {
+    font-size: 2.2rem;
+  }
+
+  .showcase-subtitle {
+    margin-bottom: 24px;
+  }
+
+  .showcase-stats-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .showcase-bottom-widget {
+    margin-top: 24px;
+  }
+
+  .split-auth-right {
+    padding: 36px 20px 24px 20px;
+  }
+
+  .split-auth-footer {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

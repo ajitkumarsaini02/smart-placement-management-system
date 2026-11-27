@@ -1,0 +1,256 @@
+/* ==========================================================================
+   PlaceTrack Dashboard Styles (dashboard.css)
+   Student, TPO, and Recruiter Portal Overviews
+   ========================================================================== */
+
+.dashboard-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-secondary);
+}
+
+.dashboard-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 254, 247, 0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+}
+
+.dashboard-nav-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.dashboard-user-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-info-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background-color: var(--color-light-mint);
+  border: 1px solid var(--color-soft-mint);
+  border-radius: var(--radius-full);
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-dark-green);
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 40px 24px;
+}
+
+.dashboard-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.dashboard-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-bottom: 6px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.dashboard-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--color-dark-green);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.dashboard-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dashboard-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.dash-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.dash-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-mint-secondary);
+}
+
+.dash-card-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mint-box {
+  background-color: var(--color-light-mint);
+  border: 1px solid var(--color-soft-mint);
+}
+
+.soft-mint-box {
+  background-color: var(--color-soft-mint);
+}
+
+.emerald-box {
+  background-color: var(--color-primary);
+}
+
+.dash-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-card-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dash-card-number {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-dark-green);
+  line-height: 1.2;
+}
+
+.dash-card-number .unit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.dash-card-sub {
+  font-size: 0.76rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.text-emerald {
+  color: var(--color-primary) !important;
+}
+
+.dash-notice-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-soft-mint);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.notice-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.notice-details h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-dark-green);
+  margin: 0 0 6px 0;
+}
+
+.notice-details p {
+  font-size: 0.94rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.verification-pill-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #FEF3C7;
+  border: 1px solid #FCD34D;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  color: #92400E;
+}
+
+/* Responsive Dashboard */
+@media (max-width: 1023px) {
+  .dashboard-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-nav-container {
+    padding: 0 16px;
+  }
+
+  .user-info-pill .user-name {
+    display: none;
+  }
+}
