@@ -25,12 +25,8 @@ const Login = () => {
 
   const handleSubmit = async (email, password) => {
     setFormError('');
-    if (!email || !password) {
-      setFormError('Please enter both your email and password.');
-      return;
-    }
     setIsSubmitting(true);
-    const result = await login(email, password);
+    const result = await login(email, password, selectedRole);
     setIsSubmitting(false);
 
     if (result.success && result.user) {

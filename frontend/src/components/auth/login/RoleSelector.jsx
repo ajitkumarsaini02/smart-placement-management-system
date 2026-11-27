@@ -68,6 +68,10 @@ const RoleSelector = ({ onSelectRole }) => {
           Super Admin? Click here →
         </button>
       </div>
+
+      <div style={{ textAlign: 'center', marginTop: '16px', fontSize: '0.8rem', color: '#047857', fontWeight: '500' }}>
+        ⚡ Instant Demo Mode Active • Sign In Without Backend
+      </div>
     </div>
   );
 };

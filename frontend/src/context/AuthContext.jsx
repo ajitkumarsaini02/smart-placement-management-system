@@ -28,21 +28,24 @@ export const AuthProvider = ({ children }) => {
     const init = async () => {
       try {
         const res = await authService.getMe();
-        if (res.user) setUser(res.user);
+        if (res?.user) setUser(res.user);
       } catch { setUser(null); } finally { setLoading(false); }
     };
     init();
   }, []);
 
-  const login = async (email, password) => {
+  const login = async (email, password, roleHint) => {
     setLoading(true);
     setError(null);
     try {
-      const res = await authService.login(email, password);
-      setUser(res.user);
-      setToken(res.token);
-      localStorage.setItem('placetrack_user', JSON.stringify(res.user));
-      return { success: true, user: res.user };
+      const res = await authService.login(email, password, roleHint);
+      if (res?.user) {
+        setUser(res.user);
+        setToken(res.token);
+        localStorage.setItem('placetrack_user', JSON.stringify(res.user));
+        return { success: true, user: res.user };
+      }
+      return { success: false, message: 'Invalid credentials.' };
     } catch (err) {
       const msg = err.message || 'Login failed';
       setError(msg);
@@ -55,10 +58,13 @@ export const AuthProvider = ({ children }) => {
     setError(null);
     try {
       const res = await authService.register(userData);
-      setUser(res.user);
-      setToken(res.token);
-      localStorage.setItem('placetrack_user', JSON.stringify(res.user));
-      return { success: true, user: res.user };
+      if (res?.user) {
+        setUser(res.user);
+        setToken(res.token);
+        localStorage.setItem('placetrack_user', JSON.stringify(res.user));
+        return { success: true, user: res.user };
+      }
+      return { success: false, message: 'Registration failed' };
     } catch (err) {
       const msg = err.message || 'Registration failed';
       setError(msg);

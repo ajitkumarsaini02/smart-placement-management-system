@@ -2,18 +2,32 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../../common/Input';
 import Button from '../../common/Button';
-import { Mail, Lock, Eye, EyeOff, ArrowLeft, ArrowRight, AlertCircle } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ArrowLeft, ArrowRight, AlertCircle, Zap } from 'lucide-react';
 import ROLE_CONFIGS from './roleConfigs';
+
+const defaultRoleCredentials = {
+  student: { email: 'student@placetrack.com', password: 'Password@123' },
+  tpo: { email: 'tpo@placetrack.com', password: 'Password@123' },
+  recruiter: { email: 'recruiter@placetrack.com', password: 'Password@123' },
+  admin: { email: 'admin@placetrack.com', password: 'Password@123' },
+};
 
 const RoleLoginForm = ({ role, onBack, onSubmit, isSubmitting, formError }) => {
   const config = ROLE_CONFIGS[role] || ROLE_CONFIGS.student;
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const defaults = defaultRoleCredentials[role] || defaultRoleCredentials.student;
+  const [email, setEmail] = useState(defaults.email);
+  const [password, setPassword] = useState(defaults.password);
   const [showPassword, setShowPassword] = useState(false);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit(email, password);
+    onSubmit(email || defaults.email, password || defaults.password);
+  };
+
+  const handleQuickDemoLogin = () => {
+    setEmail(defaults.email);
+    setPassword(defaults.password);
+    onSubmit(defaults.email, defaults.password);
   };
 
   return (
@@ -47,6 +61,9 @@ const RoleLoginForm = ({ role, onBack, onSubmit, isSubmitting, formError }) => {
         </div>
         <Button type="submit" variant="primary" size="lg" fullWidth disabled={isSubmitting} icon={isSubmitting ? undefined : <ArrowRight size={16} />} className="login-form-submit">
           {isSubmitting ? 'Signing in...' : 'Sign In'}
+        </Button>
+        <Button type="button" variant="outline" size="sm" fullWidth onClick={handleQuickDemoLogin} icon={<Zap size={14} />} style={{ marginTop: '8px' }}>
+          One-Click Instant Demo Login
         </Button>
       </form>
       {config.registerPath && (
