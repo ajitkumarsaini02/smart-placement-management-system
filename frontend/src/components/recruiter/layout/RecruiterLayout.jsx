@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import RecruiterNavbar from './RecruiterNavbar';
-import { LayoutDashboard, Building, FilePlus, Users, GitBranch, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Building, FilePlus, Users, GitBranch } from 'lucide-react';
 
 const currentYear = new Date().getFullYear();
 
@@ -34,11 +34,6 @@ const RecruiterLayout = ({ children, pageTitle, pageSubtitle, actionButton, isVe
           <div className="recruiter-container">
             <div className="recruiter-page-header-row">
               <div className="recruiter-page-header-content">
-                <div className="recruiter-breadcrumbs">
-                  <Link to="/recruiter/dashboard" className="crumb-link">Hiring Portal</Link>
-                  <ChevronRight size={14} className="crumb-sep" />
-                  <span className="crumb-current">{pageTitle}</span>
-                </div>
                 <h1 className="recruiter-page-title">{pageTitle}</h1>
                 {pageSubtitle && <p className="recruiter-page-subtitle">{pageSubtitle}</p>}
               </div>

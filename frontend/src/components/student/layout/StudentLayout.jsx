@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import api from '../../../services/api';
 import StudentNavbar from './StudentNavbar';
-import { LayoutDashboard, Compass, FileCheck2, User, Bell, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Compass, FileCheck2, User, Bell } from 'lucide-react';
 
 const currentYear = new Date().getFullYear();
 
@@ -50,11 +50,6 @@ const StudentLayout = ({ children, pageTitle, pageSubtitle }) => {
         <section className="student-page-header">
           <div className="student-container">
             <div className="page-header-content">
-              <div className="breadcrumbs">
-                <Link to="/student/dashboard" className="crumb-link">Home</Link>
-                <ChevronRight size={14} className="crumb-sep" />
-                <span className="crumb-current">{pageTitle}</span>
-              </div>
               <h1 className="student-page-title">{pageTitle}</h1>
               {pageSubtitle && <p className="student-page-subtitle">{pageSubtitle}</p>}
             </div>

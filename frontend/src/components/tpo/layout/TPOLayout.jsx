@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import TPONavbar from './TPONavbar';
-import { LayoutDashboard, Users, Building2, Calendar, FileCheck, BarChart3, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Users, Building2, Calendar, FileCheck, BarChart3 } from 'lucide-react';
 
 const currentYear = new Date().getFullYear();
 
@@ -28,11 +28,6 @@ const TPOLayout = ({ children, pageTitle, pageSubtitle, actionButton }) => {
           <div className="tpo-container">
             <div className="tpo-page-header-row">
               <div className="tpo-page-header-content">
-                <div className="tpo-breadcrumbs">
-                  <Link to="/tpo/dashboard" className="crumb-link">TPO Portal</Link>
-                  <ChevronRight size={14} className="crumb-sep" />
-                  <span className="crumb-current">{pageTitle}</span>
-                </div>
                 <h1 className="tpo-page-title">{pageTitle}</h1>
                 {pageSubtitle && <p className="tpo-page-subtitle">{pageSubtitle}</p>}
               </div>
