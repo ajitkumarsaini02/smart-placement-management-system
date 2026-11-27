@@ -30,7 +30,7 @@
 
 | Deployment Attribute | Details / Configuration Link |
 | :------------------- | :--------------------------- |
-| **Live Deployed URL** | **[https://smart-placement-management-system.onrender.com](https://smart-placement-management-system.onrender.com)** |
+| **Live Deployed URL** | **[https://smart-placement-management-system-wylk.onrender.com](https://smart-placement-management-system-wylk.onrender.com)** |
 | **Alternative Mirror** | [https://placetrack-placement-system.onrender.com](https://placetrack-placement-system.onrender.com) |
 | **Platform**         | [Render Cloud Platform](https://render.com) (Static Site + SPA Rewrite Engine) |
 | **Build Configuration** | `cd frontend && npm install && npm run build` &rarr; `./frontend/dist` |
