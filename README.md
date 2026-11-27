@@ -3,8 +3,7 @@
 > **Tagline:** Your Career. Your Placement. One Smart Platform.  
 > **Institution:** ABES Engineering College, Ghaziabad  
 > **Course:** Full-Stack Web Development (B.Tech CSE Project — 5th Semester)  
-> **Architecture:** Three-Tier Decoupled Full-Stack Architecture (React.js Frontend + Java Spring Boot RESTful API + Relational Database)  
-> **Design System:** Pure CSS3 (Emerald + Mint + Ivory Palette)  
+> **Architecture:** Three-Tier Decoupled Full-Stack Architecture (React.js Frontend + Java Spring Boot RESTful API + Relational Database) 
 
 ---
 

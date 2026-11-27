@@ -45,6 +45,7 @@ ehthumbs.db
 *.swo
 *.tmp
 *.bak
+~$*
 
 *.cursor
 *andrej-karpathy-skills
