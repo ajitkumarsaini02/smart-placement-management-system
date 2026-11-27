@@ -266,10 +266,26 @@
   color: #92400E;
 }
 
+.warning-banner .banner-title {
+  color: #92400E;
+}
+
+.warning-banner .banner-text {
+  color: #78350F;
+}
+
 .success-banner {
   background: #ECFDF5;
   border: 1px solid #A7F3D0;
   color: #065F46;
+}
+
+.success-banner .banner-title {
+  color: #065F46;
+}
+
+.success-banner .banner-text {
+  color: #047857;
 }
 
 .banner-content {
@@ -286,7 +302,7 @@
   font-size: 0.88rem;
   margin: 0;
   line-height: 1.5;
-  opacity: 0.95;
+  font-weight: 500;
 }
 
 /* KPI Metrics Grid */
