@@ -11,9 +11,8 @@ export default function RecruiterNavbar({ navItems, user, isVerified, onLogout, 
           <div className="recruiter-brand-icon-box"><Briefcase size={20} /></div>
           <div className="recruiter-brand-text">
             <span className="recruiter-brand-name">Place<span className="recruiter-brand-accent">Track</span></span>
-            <span className="recruiter-portal-tag">Recruiter Portal</span>
+            <span className="recruiter-portal-tag">ABESEC Ghaziabad &bull; Recruiter Portal</span>
           </div>
-          <span className="header-institution-badge">ABESEC Ghaziabad</span>
         </Link>
 
         <nav className="recruiter-desktop-nav">

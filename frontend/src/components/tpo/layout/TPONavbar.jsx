@@ -11,9 +11,8 @@ export default function TPONavbar({ navItems, user, onLogout, mobileMenuOpen, se
           <div className="tpo-brand-icon-box"><Briefcase size={20} /></div>
           <div className="tpo-brand-text">
             <span className="tpo-brand-name">Place<span className="tpo-brand-accent">Track</span></span>
-            <span className="tpo-portal-tag">TPO Office</span>
+            <span className="tpo-portal-tag">ABESEC Ghaziabad &bull; TPO Office</span>
           </div>
-          <span className="header-institution-badge">ABESEC Ghaziabad</span>
         </Link>
 
         <nav className="tpo-desktop-nav">

@@ -11,7 +11,7 @@
   background-color: var(--color-bg-ivory, #FFFEF7);
   color: var(--color-text-primary, #172B24);
   font-family: var(--font-family, sans-serif);
-  padding-top: 68px; /* Offset for fixed navbar */
+  padding-top: 84px; /* Offset for fixed navbar with generous clearance */
 }
 
 .student-container {
