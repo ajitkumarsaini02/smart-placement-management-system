@@ -45,6 +45,7 @@ const Navbar = () => {
         <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
           <div className="logo-icon-wrapper"><Briefcase size={20} className="logo-icon" /></div>
           <span className="logo-brand">Place<span className="logo-highlight">Track</span></span>
+          <span className="header-institution-badge">ABESEC Ghaziabad</span>
         </Link>
         <div className="nav-links-desktop">
           {navLinks.map((link) => (

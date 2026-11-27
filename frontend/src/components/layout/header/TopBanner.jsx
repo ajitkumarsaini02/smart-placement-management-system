@@ -7,10 +7,10 @@ const TopBanner = () => {
     <div className="top-announcement-bar">
       <div className="top-banner-inner">
         <span className="banner-tag">
-          <Sparkles size={12} /> NAAC & AICTE Ready
+          <Sparkles size={12} /> ABESEC Ghaziabad
         </span>
         <span className="banner-text">
-          India's #1 AI-Powered Training & Placement Management Platform 2026
+          ABESEC Ghaziabad • India's #1 AI-Powered Training & Placement Management Platform 2026
         </span>
         <Link to="/login" className="banner-link">
           Access Placement Cell <ArrowRight size={13} />

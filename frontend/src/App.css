@@ -2730,6 +2730,57 @@
   transform: translateY(-2px);
 }
 
+.header-institution-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background-color: rgba(4, 120, 87, 0.08);
+  border: 1px solid rgba(4, 120, 87, 0.22);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.03em;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.footer-institution {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #A7F3D0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 6px 0 2px 0;
+}
+
+.footer-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.footer-dev-by {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #F0FDF4;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.footer-team-badge {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #A7F3D0;
+  margin: 0;
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: #94A3B8;
+  margin: 0;
+}
+
 .site-header {
   position: sticky;
   top: 0;

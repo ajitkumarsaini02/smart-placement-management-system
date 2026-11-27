@@ -20,10 +20,10 @@ export const footerColumns = [
   {
     title: 'Campus Compliance',
     items: [
+      'ABESEC Ghaziabad T&P Cell',
       'NAAC Placement Records Format',
       'AICTE T&P Cell Automation',
       'Multi-Role RBAC Security',
-      'Zero-Loss Audit History',
     ],
   },
 ];

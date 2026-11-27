@@ -14,6 +14,7 @@ const Footer = () => {
               <div className="footer-logo-icon"><Briefcase size={20} /></div>
               <span className="footer-brand-name">Place<span className="footer-brand-highlight">Track</span></span>
             </a>
+            <p className="footer-institution">ABESEC Ghaziabad</p>
             <p className="footer-tagline">Your Career. Your Placement. One Smart Platform.</p>
             <p className="footer-description">
               A centralized campus placement management platform streamlining the recruitment journey for students, training & placement cells, and global corporate hiring teams.
@@ -36,8 +37,14 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <div className="footer-copyright">
-            © 2026 PlaceTrack – Smart Placement Management & Tracking System. All rights reserved.
+          <div className="footer-credits">
+            <p className="footer-dev-by">
+              Developed &amp; Maintained By: Ajit Kumar Saini, Aditya Yadav (CSE-11)
+            </p>
+            <p className="footer-team-badge">Full Stack Development Team</p>
+            <p className="footer-copyright">
+              © 2026 ABESEC Ghaziabad. All Rights Reserved.
+            </p>
           </div>
           <div className="footer-bottom-actions">
             <button type="button" onClick={scrollToTop} className="btn-back-to-top" aria-label="Back to top">
