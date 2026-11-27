@@ -3,7 +3,13 @@ import { mockUsers } from '../data/mockUsers';
 
 export const handleMockFallback = (config) => {
   const url = config.url || '';
-  const wrap = (data) => ({ data: { success: true, ...data, data }, status: 200, statusText: 'OK', headers: {}, config });
+  const wrap = (payload, extra = {}) => {
+    const isArr = Array.isArray(payload);
+    const body = isArr
+      ? { success: true, count: payload.length, data: payload, ...extra }
+      : { success: true, ...payload, data: payload?.data || payload, ...extra };
+    return { data: body, status: 200, statusText: 'OK', headers: {}, config };
+  };
 
   if (url.includes('/auth/login')) {
     let body = {};
@@ -43,13 +49,23 @@ export const handleMockFallback = (config) => {
     return wrap({ company: mockStore.getCompanies()[0] || { name: 'Google Cloud India', isVerified: true }, stats: statsObj, jobs: jobs.slice(0, 3), recentCandidates: mockStore.getStudents().slice(0, 5), recentApplicants: apps.slice(0, 5) });
   }
 
-  if (url.includes('/applications')) return wrap({ applications: mockStore.getApplications() });
-  if (url.includes('/profile') || url.includes('/students/me')) return wrap({ student: mockStore.getStudent() });
-  if (url.includes('/jobs')) return wrap({ jobs: mockStore.getJobs() });
-  if (url.includes('/notifications')) return wrap({ notifications: mockStore.getNotifications() });
-  if (url.includes('/students') || url.includes('/candidates')) return wrap({ students: mockStore.getStudents(), candidates: mockStore.getStudents() });
-  if (url.includes('/companies')) return wrap({ companies: mockStore.getCompanies() });
-  if (url.includes('/drives')) return wrap({ drives: mockStore.getDrives() });
+  if (url.includes('/recruiter/company') || url.includes('/company')) {
+    const comp = mockStore.getCompanies()[0] || { name: 'Google Cloud India', isVerified: true };
+    return wrap(comp, { company: comp });
+  }
+
+  if (url.includes('/candidates')) {
+    const apps = mockStore.getApplications();
+    return wrap(apps, { candidates: apps, applications: apps });
+  }
+
+  if (url.includes('/applications')) return wrap(mockStore.getApplications(), { applications: mockStore.getApplications() });
+  if (url.includes('/profile') || url.includes('/students/me')) return wrap(mockStore.getStudent(), { student: mockStore.getStudent() });
+  if (url.includes('/jobs')) return wrap(mockStore.getJobs(), { jobs: mockStore.getJobs() });
+  if (url.includes('/notifications')) return wrap(mockStore.getNotifications(), { notifications: mockStore.getNotifications() });
+  if (url.includes('/students')) return wrap(mockStore.getStudents(), { students: mockStore.getStudents() });
+  if (url.includes('/companies')) return wrap(mockStore.getCompanies(), { companies: mockStore.getCompanies() });
+  if (url.includes('/drives')) return wrap(mockStore.getDrives(), { drives: mockStore.getDrives() });
 
   return wrap({});
 };

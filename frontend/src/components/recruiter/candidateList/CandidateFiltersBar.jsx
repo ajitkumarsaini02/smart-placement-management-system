@@ -2,7 +2,9 @@ import React from 'react';
 import Button from '../../common/Button';
 import { Search, Filter, Briefcase } from 'lucide-react';
 
-export default function CandidateFiltersBar({ search, setSearch, selectedJob, setSelectedJob, jobs, statusFilter, setStatusFilter, departmentFilter, setDepartmentFilter, minCgpa, setMinCgpa, onSubmit }) {
+export default function CandidateFiltersBar({ search, setSearch, selectedJob, setSelectedJob, jobs = [], statusFilter, setStatusFilter, departmentFilter, setDepartmentFilter, minCgpa, setMinCgpa, onSubmit }) {
+  const safeJobs = Array.isArray(jobs) ? jobs : [];
+
   return (
     <div className="recruiter-controls-card">
       <form onSubmit={onSubmit} className="search-filter-grid">
@@ -15,7 +17,7 @@ export default function CandidateFiltersBar({ search, setSearch, selectedJob, se
           <Briefcase size={16} className="filter-icon" />
           <select className="filter-select" value={selectedJob} onChange={(e) => setSelectedJob(e.target.value)}>
             <option value="all">All Job Openings</option>
-            {jobs.map((j) => <option key={j._id} value={j._id}>{j.title}</option>)}
+            {safeJobs.map((j) => <option key={j._id} value={j._id}>{j.title}</option>)}
           </select>
         </div>
 

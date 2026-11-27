@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import recruiterService from '../../../services/recruiterService';
+import mockStore from '../../../data/mockStore';
 import Loader from '../../common/Loader';
 import ShortlistedCard from './ShortlistedCard';
 import { Award, CheckCircle, AlertCircle } from 'lucide-react';
@@ -15,11 +16,11 @@ const ShortlistedCandidates = ({ onScheduleInterview }) => {
       setLoading(true);
       setErrorMsg('');
       const res = await recruiterService.getCandidates();
-      if (res.data) {
-        setCandidates(res.data.filter((c) => c.status === 'shortlisted' || c.status === 'interview_scheduled'));
-      }
-    } catch (err) {
-      setErrorMsg(err.message || 'Failed to load shortlisted pool');
+      const raw = Array.isArray(res?.data) ? res.data : Array.isArray(res?.candidates) ? res.candidates : Array.isArray(res) ? res : mockStore.getApplications();
+      setCandidates(raw.filter((c) => c.status === 'shortlisted' || c.status === 'interview_scheduled'));
+    } catch {
+      const raw = mockStore.getApplications();
+      setCandidates(raw.filter((c) => c.status === 'shortlisted' || c.status === 'interview_scheduled'));
     } finally {
       setLoading(false);
     }
@@ -39,13 +40,14 @@ const ShortlistedCandidates = ({ onScheduleInterview }) => {
   };
 
   if (loading) return <Loader text="Loading shortlisted candidates..." />;
+  const safeCandidates = Array.isArray(candidates) ? candidates : [];
 
   return (
     <div className="shortlisted-wrapper">
       {actionSuccess && <div className="alert-success"><CheckCircle size={16} /> <span>{actionSuccess}</span></div>}
       {errorMsg && <div className="alert-danger"><AlertCircle size={16} /> <span>{errorMsg}</span></div>}
 
-      {candidates.length === 0 ? (
+      {safeCandidates.length === 0 ? (
         <div className="empty-state-box">
           <Award size={40} className="empty-icon text-muted" />
           <h3 className="empty-title">No Candidates Currently in Shortlist</h3>
@@ -53,7 +55,7 @@ const ShortlistedCandidates = ({ onScheduleInterview }) => {
         </div>
       ) : (
         <div className="shortlisted-cards-grid">
-          {candidates.map((app) => (
+          {safeCandidates.map((app) => (
             <ShortlistedCard key={app._id} app={app} onScheduleInterview={onScheduleInterview} onSelect={handleSelect} />
           ))}
         </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import recruiterService from '../../../services/recruiterService';
+import mockStore from '../../../data/mockStore';
 import Badge from '../../common/Badge';
 import Loader from '../../common/Loader';
 import FunnelPipelineGrid from './FunnelPipelineGrid';
@@ -24,27 +25,29 @@ const RecruitmentStatus = () => {
       try {
         setLoading(true);
         const res = await recruiterService.getCandidates();
-        if (res.data) setCandidates(res.data);
-      } catch (err) { console.error('Failed to load candidate funnel:', err); }
+        const raw = Array.isArray(res?.data) ? res.data : Array.isArray(res?.candidates) ? res.candidates : Array.isArray(res) ? res : mockStore.getApplications();
+        setCandidates(raw);
+      } catch { setCandidates(mockStore.getApplications()); }
       finally { setLoading(false); }
     })();
   }, []);
 
+  const safeCandidates = Array.isArray(candidates) ? candidates : [];
+
   const getStageCount = (stageKey) => {
-    if (stageKey === 'selected') return candidates.filter((c) => c.status === 'selected' || c.status === 'offered').length;
-    return candidates.filter((c) => c.status === stageKey).length;
+    if (stageKey === 'selected') return safeCandidates.filter((c) => c.status === 'selected' || c.status === 'offered').length;
+    return safeCandidates.filter((c) => c.status === stageKey).length;
   };
 
-  const filteredCandidates = activeStage === 'all' ? candidates : activeStage === 'selected'
-    ? candidates.filter((c) => c.status === 'selected' || c.status === 'offered')
-    : candidates.filter((c) => c.status === activeStage);
+  const filteredCandidates = activeStage === 'all' ? safeCandidates : activeStage === 'selected'
+    ? safeCandidates.filter((c) => c.status === 'selected' || c.status === 'offered')
+    : safeCandidates.filter((c) => c.status === activeStage);
 
   if (loading) return <Loader text="Loading recruitment funnel..." />;
 
   return (
     <div className="recruitment-funnel-wrapper">
       <FunnelPipelineGrid stages={STAGES} getStageCount={getStageCount} activeStage={activeStage} setActiveStage={setActiveStage} />
-
       <div className="funnel-candidates-panel">
         <div className="panel-header">
           <h3 className="panel-title">
@@ -55,7 +58,6 @@ const RecruitmentStatus = () => {
             <button type="button" className="btn btn-ghost btn-sm" onClick={() => setActiveStage('all')}>Clear Filter</button>
           )}
         </div>
-
         {filteredCandidates.length === 0 ? (
           <div className="empty-state-box"><Users size={32} className="text-muted" /><p className="empty-text">No candidates found in this stage.</p></div>
         ) : (
@@ -80,5 +82,4 @@ const RecruitmentStatus = () => {
     </div>
   );
 };
-
 export default RecruitmentStatus;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import recruiterService from '../../../services/recruiterService';
+import mockStore from '../../../data/mockStore';
 import Loader from '../../common/Loader';
 import CandidateProfile from '../candidateProfile/CandidateProfile';
 import CandidateFiltersBar from './CandidateFiltersBar';
@@ -33,9 +34,14 @@ const CandidateList = ({ preselectedJobId = null }) => {
       if (departmentFilter !== 'all') params.department = departmentFilter;
       if (minCgpa) params.minCGPA = minCgpa;
       const [cRes, jRes] = await Promise.all([recruiterService.getCandidates(params), recruiterService.getJobs()]);
-      if (cRes.data) setCandidates(cRes.data);
-      if (jRes.data) setJobs(jRes.data);
-    } catch (err) { setErrorMsg(err.message || 'Failed to load'); } finally { setLoading(false); }
+      const rawCands = Array.isArray(cRes?.data) ? cRes.data : Array.isArray(cRes?.candidates) ? cRes.candidates : Array.isArray(cRes) ? cRes : mockStore.getApplications();
+      const rawJobs = Array.isArray(jRes?.data) ? jRes.data : Array.isArray(jRes?.jobs) ? jRes.jobs : Array.isArray(jRes) ? jRes : mockStore.getJobs();
+      setCandidates(rawCands);
+      setJobs(rawJobs);
+    } catch {
+      setCandidates(mockStore.getApplications());
+      setJobs(mockStore.getJobs());
+    } finally { setLoading(false); }
   };
 
   useEffect(() => { fetchCandidatesAndJobs(); }, [selectedJob, statusFilter, departmentFilter]);
@@ -65,18 +71,20 @@ const CandidateList = ({ preselectedJobId = null }) => {
     } catch (err) { setErrorMsg(err.message || 'Schedule failed'); } finally { setActionLoading(false); }
   };
 
+  const safeCandidates = Array.isArray(candidates) ? candidates : [];
+
   return (
     <div className="candidate-list-wrapper">
       <CandidateFiltersBar search={search} setSearch={setSearch} selectedJob={selectedJob} setSelectedJob={setSelectedJob} jobs={jobs} statusFilter={statusFilter} setStatusFilter={setStatusFilter} departmentFilter={departmentFilter} setDepartmentFilter={setDepartmentFilter} minCgpa={minCgpa} setMinCgpa={setMinCgpa} onSubmit={(e) => { e.preventDefault(); fetchCandidatesAndJobs(); }} />
       {successMsg && <div className="alert-success"><CheckCircle size={16} /> <span>{successMsg}</span></div>}
       {errorMsg && <div className="alert-danger"><AlertCircle size={16} /> <span>{errorMsg}</span></div>}
-      {loading ? <Loader text="Loading applicants..." /> : candidates.length === 0 ? (
+      {loading ? <Loader text="Loading applicants..." /> : safeCandidates.length === 0 ? (
         <div className="empty-state-box"><Users size={40} className="empty-icon text-muted" /><h3>No Applicants</h3></div>
       ) : (
         <div className="table-responsive-wrapper">
           <table className="data-table">
             <thead><tr><th>Candidate</th><th>Applied Role</th><th>Department</th><th>CGPA</th><th>Backlogs</th><th>Stage</th><th>Actions</th></tr></thead>
-            <tbody>{candidates.map((app) => <CandidateTableRow key={app._id} app={app} onSelect={setActiveCandidate} onUpdateStatus={handleUpdateStatus} onScheduleInterview={setInterviewModalTarget} actionLoading={actionLoading} />)}</tbody>
+            <tbody>{safeCandidates.map((app) => <CandidateTableRow key={app._id} app={app} onSelect={setActiveCandidate} onUpdateStatus={handleUpdateStatus} onScheduleInterview={setInterviewModalTarget} actionLoading={actionLoading} />)}</tbody>
           </table>
         </div>
       )}
