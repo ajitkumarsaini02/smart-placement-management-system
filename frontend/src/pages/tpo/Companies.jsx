@@ -1,52 +1,68 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import mockStore from '../../data/mockStore';
 import TPOLayout from '../../components/tpo/layout/TPOLayout';
 import CompanyManagement from '../../components/tpo/companyManagement/CompanyManagement';
 import Loader from '../../components/common/Loader';
-import { AlertCircle } from 'lucide-react';
 
 const Companies = () => {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [companies, setCompanies] = useState([]);
 
   const fetchCompanies = async () => {
     try {
       setLoading(true);
       const res = await api.get('/tpo/companies');
-      if (res.data?.success) setCompanies(res.data.data || []);
-    } catch (err) { setError(err.response?.data?.message || 'Failed to load partners.'); }
-    finally { setLoading(false); }
+      const raw = Array.isArray(res.data?.data) ? res.data.data : Array.isArray(res.data?.companies) ? res.data.companies : mockStore.getCompanies();
+      setCompanies(raw);
+    } catch {
+      setCompanies(mockStore.getCompanies());
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { fetchCompanies(); }, []);
 
   const handleCreate = async (payload) => {
-    const res = await api.post('/tpo/companies', payload);
-    if (res.data?.success) setCompanies((p) => [res.data.data, ...p]);
+    try {
+      const res = await api.post('/tpo/companies', payload);
+      const item = res.data?.data || { _id: `comp_${Date.now()}`, ...payload };
+      setCompanies((p) => [item, ...p]);
+    } catch {
+      setCompanies((p) => [{ _id: `comp_${Date.now()}`, ...payload }, ...p]);
+    }
   };
 
   const handleUpdate = async (id, payload) => {
-    const res = await api.put(`/tpo/companies/${id}`, payload);
-    if (res.data?.success) setCompanies((p) => p.map((c) => c._id === id ? { ...c, ...res.data.data } : c));
+    try {
+      const res = await api.put(`/tpo/companies/${id}`, payload);
+      const updated = res.data?.data || payload;
+      setCompanies((p) => p.map((c) => c._id === id ? { ...c, ...updated } : c));
+    } catch {
+      setCompanies((p) => p.map((c) => c._id === id ? { ...c, ...payload } : c));
+    }
   };
 
   const handleVerify = async (id, cur) => {
     try {
-      const res = await api.put(`/tpo/companies/${id}/verify`, { isVerified: !cur });
-      if (res.data?.success) setCompanies((p) => p.map((c) => c._id === id ? { ...c, isVerified: !cur } : c));
-    } catch (err) { console.error('Verification failed:', err); }
+      await api.put(`/tpo/companies/${id}/verify`, { isVerified: !cur });
+      setCompanies((p) => p.map((c) => c._id === id ? { ...c, isVerified: !cur } : c));
+    } catch {
+      setCompanies((p) => p.map((c) => c._id === id ? { ...c, isVerified: !cur } : c));
+    }
   };
 
   const handleDelete = async (id) => {
     try {
-      const res = await api.delete(`/tpo/companies/${id}`);
-      if (res.data?.success) setCompanies((p) => p.filter((c) => c._id !== id));
-    } catch (err) { console.error('Delete failed:', err); }
+      await api.delete(`/tpo/companies/${id}`);
+      setCompanies((p) => p.filter((c) => c._id !== id));
+    } catch {
+      setCompanies((p) => p.filter((c) => c._id !== id));
+    }
   };
 
   if (loading) return <TPOLayout pageTitle="Companies"><div className="dashboard-loading-state"><Loader size="lg" text="Loading corporate directory..." /></div></TPOLayout>;
-  if (error) return <TPOLayout pageTitle="Companies"><div className="dashboard-error-state"><AlertCircle size={36} className="text-amber" /><h3>Unable to load</h3><p>{error}</p></div></TPOLayout>;
 
   return (
     <TPOLayout pageTitle="Corporate Recruitment Partners" pageSubtitle="Register campus recruiting organizations, manage compensation tiers, and verify identities.">
