@@ -26,6 +26,35 @@
 
 ---
 
+## 🌐 Live Cloud Deployment (Render)
+
+| Deployment Attribute | Details / Configuration Link |
+| :------------------- | :--------------------------- |
+| **Live Deployed URL** | **[https://smart-placement-management-system.onrender.com](https://smart-placement-management-system.onrender.com)** |
+| **Alternative Mirror** | [https://placetrack-placement-system.onrender.com](https://placetrack-placement-system.onrender.com) |
+| **Platform**         | [Render Cloud Platform](https://render.com) (Static Site + SPA Rewrite Engine) |
+| **Build Configuration** | `cd frontend && npm install && npm run build` &rarr; `./frontend/dist` |
+| **Routing Rewrite**  | `/*` &rarr; `/index.html` (Full React Router client-side history navigation) |
+| **Deployment Status**| Active &middot; Auto-deploy enabled from `main` branch |
+
+---
+
+## 🔑 Demo Login Credentials (All User Roles)
+
+For evaluation, grading, and testing of all role-specific workflows, pre-configured accounts are available:
+
+| User Role | Username / Email | Password | Access Level & Key Features |
+| :--- | :--- | :--- | :--- |
+| **👑 Super Admin** | `admin@placetrack.com` | `Password@123` | Institutional Audit, TPO Master Controls, University Governance |
+| **🎓 Student (Primary)** | `student@placetrack.com` | `Password@123` | Opportunities, Automated Eligibility Engine, Live 5-Stage Stepper, PDF Resume |
+| **🎓 Student (Alt / Aditya)** | `aditya@placetrack.com` | `Password@123` | Secondary student account for multi-applicant testing (CSE-11, 8.5+ CGPA) |
+| **🏛️ TPO Officer** | `tpo@placetrack.com` | `Password@123` | Campus Drives, Student/Company Verification, 5 NAAC/NBA CSV Reports |
+| **🏢 Corporate Recruiter** | `recruiter@placetrack.com` | `Password@123` | Job Posting, Candidate Funnel, Resume Shortlisting, Interview Scheduling |
+
+> **💡 Quick Testing Guide:** On the Login page (`/login`), click any role card or enter the credentials above with password `Password@123` to enter that specific portal.
+
+---
+
 ## 📖 1. Project Introduction
 
 **PlaceTrack** is a centralized, role-aware campus placement management and candidate tracking platform built to streamline university placement operations. It synchronizes **Graduating Students**, **Training and Placement Officers (TPO)**, and **Corporate Recruiters** within a single, high-performance web application.
@@ -256,7 +285,42 @@ The application is configured for seamless local development and production-read
 
 ---
 
-## 🔗 12. REST API Summary (`/api/v1`)
+## ☁️ 12. Deploying to Render (Step-by-Step)
+
+The project includes pre-configured Render infrastructure configuration files (`render.yaml` and `server.js`) for zero-configuration, one-click deployments:
+
+### Method 1: Render Static Site (Recommended — Fast & 100% Free)
+
+1. Open the [Render Dashboard](https://dashboard.render.com/) and click **New +** &rarr; **Static Site**.
+2. Connect your GitHub repository: `https://github.com/ajitkumarsaini02/smart-placement-management-system`.
+3. Fill in the build settings:
+   - **Name:** `smart-placement-management-system`
+   - **Branch:** `main`
+   - **Root Directory:** leave blank (repository root)
+   - **Build Command:** `cd frontend && npm install && npm run build`
+   - **Publish Directory:** `./frontend/dist`
+4. Under **Advanced / Redirects and Rewrites**, add the SPA rewrite rule:
+   - **Type:** `Rewrite`
+   - **Source:** `/*`
+   - **Destination:** `/index.html`
+5. Click **Create Static Site**. Render will automatically build the React bundle and deploy your site in ~60 seconds.
+
+### Method 2: Render Blueprint (Infrastructure-as-Code via `render.yaml`)
+
+1. In Render Dashboard, click **New +** &rarr; **Blueprint**.
+2. Select your repository `smart-placement-management-system`.
+3. Render automatically parses `render.yaml` and sets up the Static Site, build commands, and SPA routing rewrites with zero manual entry.
+4. Click **Apply** to deploy.
+
+### Method 3: Render Web Service (Node.js Fallback)
+
+If deploying as a Node.js Web Service instead of a Static Site:
+- **Build Command:** `npm run build`
+- **Start Command:** `npm start` (runs production `server.js` listening on `0.0.0.0:${PORT}`)
+
+---
+
+## 🔗 13. REST API Summary (`/api/v1`)
 
 | Module        | Endpoints                                                                                                                                  | Access Level        | Description                                                     |
 | :------------ | :----------------------------------------------------------------------------------------------------------------------------------------- | :------------------ | :-------------------------------------------------------------- |
@@ -269,7 +333,7 @@ The application is configured for seamless local development and production-read
 
 ---
 
-## 📄 13. Documentation Links
+## 📄 14. Documentation Links
 
 - [System Design Document (Markdown)](docs/system-design-document.md)
 - [PlaceTrack System Design Document (Word Docx)](PlaceTrack%20-%20System%20Design%20Document.docx)
