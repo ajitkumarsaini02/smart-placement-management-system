@@ -13,6 +13,7 @@ export default function RecruiterNavbar({ navItems, user, isVerified, onLogout, 
             <span className="recruiter-brand-name">Place<span className="recruiter-brand-accent">Track</span></span>
             <span className="recruiter-portal-tag">Recruiter Portal</span>
           </div>
+          <span className="header-institution-badge">ABESEC Ghaziabad</span>
         </Link>
 
         <nav className="recruiter-desktop-nav">

@@ -48,7 +48,13 @@ const TPOLayout = ({ children, pageTitle, pageSubtitle, actionButton }) => {
 
       <footer className="tpo-portal-footer">
         <div className="tpo-container tpo-footer-inner">
-          <p>© {currentYear} PlaceTrack – Training & Placement Cell Portal. All rights reserved.</p>
+          <div className="portal-footer-credits">
+            <p className="portal-dev-by">
+              Developed &amp; Maintained By: <span>Ajit Kumar Saini, Aditya Yadav (CSE-11)</span>
+            </p>
+            <p className="portal-team-badge">Full Stack Development Team</p>
+            <p className="portal-copyright">© 2026 ABESEC Ghaziabad. All Rights Reserved.</p>
+          </div>
           <div className="tpo-footer-links">
             <Link to="/tpo/dashboard">Dashboard</Link>
             <Link to="/tpo/students">Students</Link>

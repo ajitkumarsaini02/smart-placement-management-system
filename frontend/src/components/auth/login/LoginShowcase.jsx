@@ -11,6 +11,7 @@ const LoginShowcase = () => {
         <span className="split-brand-name">
           Place<span className="split-brand-highlight">Track</span>
         </span>
+        <span className="header-institution-badge">ABESEC Ghaziabad</span>
       </Link>
 
       {/* Hero Showcase Message */}

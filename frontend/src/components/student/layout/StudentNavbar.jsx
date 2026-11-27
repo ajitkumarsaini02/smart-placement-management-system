@@ -13,6 +13,7 @@ export default function StudentNavbar({ navItems, user, onLogout, mobileMenuOpen
             <span className="brand-name">Place<span className="brand-accent">Track</span></span>
             <span className="portal-tag">Student Portal</span>
           </div>
+          <span className="header-institution-badge">ABESEC Ghaziabad</span>
         </Link>
 
         <nav className="student-desktop-nav">

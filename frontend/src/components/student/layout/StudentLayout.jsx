@@ -68,7 +68,13 @@ const StudentLayout = ({ children, pageTitle, pageSubtitle }) => {
 
       <footer className="student-portal-footer">
         <div className="student-container footer-inner">
-          <p>© {currentYear} PlaceTrack – Campus Placement Management System. All rights reserved.</p>
+          <div className="portal-footer-credits">
+            <p className="portal-dev-by">
+              Developed &amp; Maintained By: <span>Ajit Kumar Saini, Aditya Yadav (CSE-11)</span>
+            </p>
+            <p className="portal-team-badge">Full Stack Development Team</p>
+            <p className="portal-copyright">© 2026 ABESEC Ghaziabad. All Rights Reserved.</p>
+          </div>
           <div className="footer-links">
             <Link to="/student/dashboard">Dashboard</Link>
             <Link to="/student/opportunities">Jobs</Link>

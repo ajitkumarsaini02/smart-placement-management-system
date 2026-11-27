@@ -2794,6 +2794,59 @@
   margin: 0;
 }
 
+.portal-footer-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.85rem;
+}
+
+.portal-dev-by {
+  font-weight: 500;
+  color: inherit;
+  margin: 0;
+}
+
+.portal-dev-by span {
+  font-weight: 600;
+}
+
+.portal-team-badge {
+  font-size: 0.8rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.portal-copyright {
+  font-size: 0.78rem;
+  margin: 0;
+  opacity: 0.75;
+}
+
+.split-auth-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.76rem;
+  color: #64748B;
+  text-align: left;
+}
+
+.split-dev-by {
+  margin: 0;
+  font-weight: 600;
+  color: #047857;
+}
+
+.split-team {
+  margin: 0;
+  color: #059669;
+}
+
+.split-copyright {
+  margin: 0;
+}
+
 .site-header {
   position: sticky;
   top: 0;
