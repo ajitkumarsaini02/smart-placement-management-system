@@ -25,7 +25,7 @@
 
 #### 1.1 Project Summary & Problem Statement
 
-PlaceTrack is a role-aware campus placement automation and tracking platform built on the MERN stack (MongoDB Atlas, Express.js, React 19, Node.js) with a Pure CSS3 design system (Emerald `#047857`, Mint `#A7F3D0`, Ivory `#FFFEF7`). It eliminates traditional spreadsheet chaos, manual Google Forms, and unversioned messaging by centralizing recruitment operations across Students, Training & Placement Officers (TPO), Corporate Recruiters, and Faculty.
+PlaceTrack is a role-aware campus placement automation and tracking platform built on the Decoupled Full-Stack Architecture (React 19 Frontend + Java Spring Boot 3 Backend + Relational Database) with a Pure CSS3 design system (Emerald `#047857`, Mint `#A7F3D0`, Ivory `#FFFEF7`). It eliminates traditional spreadsheet chaos, manual Google Forms, and unversioned messaging by centralizing recruitment operations across Students, Training & Placement Officers (TPO), Corporate Recruiters, and Faculty.
 
 Traditional campus placements suffer from critical bottlenecks: manual verification errors leading to ineligible students attending drives, lack of transparent stage progression for applicants, recruiter overhead in screening unformatted resumes, and weeks of manual compilation for mandatory NAAC (Criteria 5.2.1) and NIRF accreditation audits.
 
@@ -52,8 +52,8 @@ Traditional campus placements suffer from critical bottlenecks: manual verificat
 PlaceTrack implements a decoupled Three-Tier Architecture:
 
 1. **Presentation Tier (Frontend):** React.js 19 + Vite + React Router v7 + Pure CSS3 design variables (Emerald + Mint + Ivory design system).
-2. **Application Tier (Backend API):** Node.js + Express.js REST server + Helmet security + CORS + express-rate-limit + Multer PDF upload validation.
-3. **Data Tier (Database):** MongoDB Atlas Cloud M0 NoSQL cluster + Mongoose ODM (`^8.9.5`) with compound indexing and TLS 1.3 transport security.
+2. **Application Tier (Backend API):** Java 17/21 + Spring Boot 3.x RESTful API + Spring Security + JWT Authentication Filter + CORS + Spring Data JPA + MultipartFile PDF upload validation.
+3. **Data Tier (Database):** Relational Database (PostgreSQL / MySQL) + Spring Data JPA & Hibernate ORM with referential integrity, foreign key relations, and ACID transaction guarantees.
 
 #### Architecture Flow
 
@@ -153,7 +153,7 @@ Data flows sequentially: User Login (JWT + Cookie) $\to$ Student Profile & PDF R
 **Features:**
 
 - Helmet HTTP security headers, CORS origin whitelisting for `*.vercel.app`.
-- Express rate limiting against brute force and `/api/v1/health` uptime probe.
+- Spring Security rate limiting against brute force, JWT authentication filter, and Spring Boot Actuator /actuator/health uptime probe.
 
 ---
 
@@ -161,9 +161,9 @@ Data flows sequentially: User Login (JWT + Cookie) $\to$ Student Profile & PDF R
 
 #### DATABSE SCHEMA AND ER DIAGRAM
 
-PlaceTrack utilizes MongoDB Atlas as its primary NoSQL document database, modeled and managed through Mongoose ODM (`^8.9.5`). The database consists of 9 registered domain collections designed with referential integrity, validations, and compound indexes:
+PlaceTrack utilizes a relational database (PostgreSQL / MySQL) mapped and managed through Spring Data JPA and Hibernate ORM. The database schema consists of 9 registered domain entities designed with referential integrity, validations, and unique constraints:
 
-| Collection Name       | Key Fields & Subdocuments                                                    | Domain Purpose & Indexes                                             |
+| Entity / Table Name   | Key Fields & Attributes                                                    | Domain Purpose & Indexes                                             |
 | :-------------------- | :--------------------------------------------------------------------------- | :------------------------------------------------------------------- |
 | **`users`**           | `name, email, password, role, isVerified`                                    | Platform accounts; unique email index; bcrypt hash (`select: false`) |
 | **`students`**        | `user, rollNumber, department, cgpa, backlogs, resume, placementStatus`      | Student academic records; unique rollNumber & user index             |
@@ -214,7 +214,7 @@ PlaceTrack utilizes MongoDB Atlas as its primary NoSQL document database, modele
 | Phase | Development                                                                       | Duration |
 | :---- | :-------------------------------------------------------------------------------- | :------- |
 | **1** | Requirements Analysis & UI/UX Design System (Pure CSS3 Emerald/Mint)              | 2 days   |
-| **2** | Monorepo Architecture, Package Scripts & Express REST Server Setup                | 2 days   |
+| **2** | Enterprise Architecture, Frontend Setup & Java Spring Boot REST API Setup                | 2 days   |
 | **3** | Database Schema Design, Compound Indexes & Initial Seeders                        | 3 days   |
 | **4** | Authentication, JWT Cryptography & Role-Based Access Control (RBAC)               | 1 week   |
 | **5** | Student Portal, Academic Profile & Multer PDF Resume Upload                       | 4 days   |

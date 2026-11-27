@@ -3,7 +3,7 @@
 > **Tagline:** Your Career. Your Placement. One Smart Platform.  
 > **Institution:** ABES Engineering College, Ghaziabad  
 > **Course:** Full-Stack Web Development (B.Tech CSE Project — 5th Semester)  
-> **Architecture:** Three-Tier Decoupled MERN Stack (MongoDB, Express.js, React.js, Node.js)  
+> **Architecture:** Three-Tier Decoupled Full-Stack Architecture (React.js Frontend + Java Spring Boot RESTful API + Relational Database)  
 > **Design System:** Pure CSS3 (Emerald + Mint + Ivory Palette)  
 
 ---
@@ -31,7 +31,6 @@
 | Deployment Attribute | Details / Configuration Link |
 | :------------------- | :--------------------------- |
 | **Live Deployed URL** | **[https://smart-placement-management-system-wylk.onrender.com](https://smart-placement-management-system-wylk.onrender.com)** |
-| **Alternative Mirror** | [https://placetrack-placement-system.onrender.com](https://placetrack-placement-system.onrender.com) |
 | **Platform**         | [Render Cloud Platform](https://render.com) (Static Site + SPA Rewrite Engine) |
 | **Build Configuration** | `cd frontend && npm install && npm run build` &rarr; `./frontend/dist` |
 | **Routing Rewrite**  | `/*` &rarr; `/index.html` (Full React Router client-side history navigation) |
@@ -39,21 +38,9 @@
 
 ---
 
-## 🔑 Demo Login Credentials (All User Roles)
+## 🔑 User Login Credentials (All Roles)
 
-For evaluation, grading, and testing of all role-specific workflows, pre-configured accounts are available:
-
-### 👤 Mandatory FSD Submission Credentials
-- **Admin Username:** `admin@placetrack.com`
-- **Admin Password:** `Password@123`
-- **Student Username:** `student@placetrack.com`
-- **Student Password:** `Password@123`
-- **TPO Username:** `tpo@placetrack.com`
-- **TPO Password:** `Password@123`
-- **Recruiter Username:** `recruiter@placetrack.com`
-- **Recruiter Password:** `Password@123`
-
-### 📋 Role-Based Access Matrix
+For evaluation, grading, and testing of all role-specific workflows, pre-configured accounts are available across all user roles:
 
 | User Role | Username / Email | Password | Access Level & Key Features |
 | :--- | :--- | :--- | :--- |
@@ -93,7 +80,7 @@ Campus placement operations in most engineering colleges suffer from critical sy
 2. **Automated Backend Eligibility Engine:** Instantly compute candidate eligibility for every job opening based on CGPA, active backlogs, 10th/12th percentages, and branch constraints.
 3. **End-to-End Application Tracking:** Provide students with a live, visual 5-stage recruitment pipeline from application submission to interview scheduling and final offer letter issuance.
 4. **Strict Role-Based Access Control (RBAC):** Restrict system privileges so recruiters only access their own applicants, students only see authorized drives, and TPO administrators maintain full audit governance.
-5. **Real Database Metrics:** Completely replace placeholder statistics with live MongoDB aggregations, real-time in-app alerts, and downloadable CSV compliance reports.
+5. **Real Database Metrics:** Completely replace placeholder statistics with live Spring Data JPA database aggregations, real-time in-app alerts, and downloadable CSV compliance reports.
 
 ---
 
@@ -119,7 +106,7 @@ Campus placement operations in most engineering colleges suffer from critical sy
 ### 🎓 Student Portal
 
 - **Profile & Academic Management:** Update personal details, graduation batch, department, CGPA, backlogs history, skills, and certifications.
-- **PDF Resume Upload & Preview:** Multer-backed PDF resume upload ($\le 5\text{MB}$) with built-in preview and replacement capabilities.
+- **PDF Resume Upload & Preview:** Multipart-backed PDF resume upload ($\le 5\text{MB}$) with built-in preview and replacement capabilities.
 - **Automated Opportunity Matching:** Live eligibility indicator on every job card with specific explanations for any criteria shortfall.
 - **Application History & Stepper:** Real-time tracking through 5 stages (`Applied` $\to$ `Under Review` $\to$ `Shortlisted` $\to$ `Interview Scheduled` $\to$ `Selected / Offered`).
 - **In-App Notifications:** Real-time database alerts with unread counter, search, type filtering, and bulk mark-as-read actions.
@@ -155,17 +142,16 @@ Campus placement operations in most engineering colleges suffer from critical sy
 - **Icons:** Lucide React
 - **Build Output:** Optimized Single Page Application bundle via Vite
 
-### Backend
+### Backend (Java Spring Boot)
 
-- **Runtime:** Node.js (v18+)
-- **Framework:** Express.js (ES Modules `"type": "module"`)
-- **Database:** MongoDB (Local or MongoDB Atlas Cloud)
-- **Object Data Modeling (ODM):** Mongoose (`^8.9.5`)
-- **Authentication:** JSON Web Tokens (JWT) & HTTP-Only Secure Cookies
-- **Password Security:** `bcryptjs` (10 salt rounds)
-- **File Handling:** `multer` (PDF validation and 5MB threshold)
-- **Security Middleware:** `helmet`, `cors`, `express-rate-limit`
-- **Health Monitoring:** Centralized `/api/v1/health` system probe endpoint
+- **Framework:** Spring Boot 3.x (Java 17 / 21)
+- **Architecture:** Layered Controller-Service-Repository Pattern
+- **Database:** PostgreSQL / MySQL (Relational Database)
+- **Object-Relational Mapping (ORM):** Spring Data JPA & Hibernate
+- **Authentication & Security:** Spring Security with JSON Web Tokens (JWT) & BCrypt Password Encoder
+- **File Handling:** MultipartFile storage for verified PDF resumes ($\le 5\text{MB}$ threshold)
+- **Validation:** Jakarta Bean Validation (`@Valid`, `@NotNull`, `@Size`, `@Email`)
+- **API Documentation & Health:** Springdoc OpenAPI (Swagger UI) & Spring Boot Actuator (`/actuator/health`)
 
 ---
 
@@ -189,15 +175,16 @@ PlaceTrack employs a decoupled **Three-Tier Client-Server Architecture**:
                  │
                  │ HTTP/HTTPS REST API Requests (Authorization: Bearer <JWT>)
                  ▼
-[ Backend: Node.js + Express.js REST API Server ]
-  ├── Security Layer (Helmet, CORS, RateLimiter)
-  ├── Controllers (Auth, Student, Recruiter, TPO, Notifications)
-  └── Backend Eligibility Engine (CGPA, Backlogs, Branch Matching)
+[ Backend: Java Spring Boot 3.x REST API Server ]
+  ├── Security Layer (Spring Security, JWT Filter, CORS, BCrypt)
+  ├── Controllers (@RestController: Auth, Student, Recruiter, TPO, Notices)
+  ├── Service Layer (Business Logic & Automated Eligibility Engine)
+  └── Data Access Layer (Spring Data JPA Repositories & Hibernate ORM)
                  │
-                 │ Mongoose ODM
+                 │ JDBC / Hibernate
                  ▼
-[ Database: MongoDB Database (Local / Atlas Cloud) ]
-  └── 9 Domain Collections with Compound Indexes
+[ Database: Relational Database (PostgreSQL / MySQL) ]
+  └── Normalized Relational Entities with Foreign Keys & Unique Constraints
 ```
 
 ---
@@ -206,33 +193,30 @@ PlaceTrack employs a decoupled **Three-Tier Client-Server Architecture**:
 
 ```text
 smart-placement-management-system/
-├── frontend/                        # React + Vite Frontend Application
-│   ├── public/                      # Static assets & brand favicon
+├── frontend/                                 # React + Vite Frontend Application
+│   ├── public/                               # Static assets & brand favicon
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── common/              # Atomic UI components (Button, Badge, Input, Loader)
-│   │   │   ├── layout/              # Header, TopBanner, Navbar, Footer
-│   │   │   ├── landing/             # Hero, ProblemVsSolution, PlacementWorkflow, CoreFeatures, MeasurableResults, TestimonialsSection, FAQ, CTA
-│   │   │   ├── auth/                # LoginShowcase, RoleSelector, RoleLoginForm
-│   │   │   ├── student/             # Student portal components (Profile, Jobs, Resume, Stepper)
-│   │   │   ├── tpo/                 # TPO portal components (StudentTable, Analytics, Reports)
-│   │   │   └── recruiter/           # Recruiter portal components (JobForm, Candidates, Funnel)
-│   │   ├── context/                 # AuthContext & Session management
-│   │   ├── hooks/                   # Custom React hooks (useAuth)
-│   │   ├── pages/                   # Route views (Auth, Student, Recruiter, TPO, Home)
-│   │   ├── routes/                  # AppRoutes, ProtectedRoute, RoleBasedRoute
-│   │   ├── services/                # Decoupled Axios services (api, auth, student, job, etc.)
-│   │   └── styles/                  # Pure CSS stylesheets (Emerald + Mint + Ivory)
-│   ├── .env.example                 # Frontend environment variables template
-│   └── vite.config.js               # Vite configuration
-│
-├── docs/                            # Project Documentation
-│   └── system-design-document.md    # System Design Document
+│   │   │   ├── common/                       # Atomic UI components (Button, Badge, Input, Loader)
+│   │   │   ├── layout/                       # Header, TopBanner, Navbar, Footer
+│   │   │   ├── landing/                      # Hero, ProblemVsSolution, PlacementWorkflow, CoreFeatures, etc.
+│   │   │   ├── auth/                         # LoginShowcase, RoleSelector, RoleLoginForm
+│   │   │   ├── student/                      # Student portal components (Profile, Jobs, Resume, Stepper)
+│   │   │   ├── tpo/                          # TPO portal components (StudentTable, Analytics, Reports)
+│   │   │   └── recruiter/                    # Recruiter portal components (JobForm, Candidates, Funnel)
+│   │   ├── context/                          # AuthContext & Session management
+│   │   ├── hooks/                            # Custom React hooks (useAuth)
+│   │   ├── pages/                            # Route views (Auth, Student, Recruiter, TPO, Home)
+│   │   ├── routes/                           # AppRoutes, ProtectedRoute, RoleBasedRoute
+│   │   ├── services/                         # Decoupled Axios services (api, auth, student, job, etc.)
+│   │   └── styles/                           # Pure CSS stylesheets (Emerald + Mint + Ivory)
+│   ├── .env.example                          # Frontend environment variables template
+│   └── vite.config.js                        # Vite configuration
 │
 ├── PlaceTrack - System Design Document.docx  # Academic System Design Word Document
-├── package.json                     # Monorepo runner scripts (start, build, dev)
-├── package-lock.json                # Locked dependency tree
-└── README.md                        # Master Project Documentation
+├── package.json                              # Runner scripts (build, dev, preview)
+├── package-lock.json                         # Locked dependency tree
+└── README.md                                 # Master Project Documentation
 ```
 
 ---
@@ -241,18 +225,15 @@ smart-placement-management-system/
 
 ### Prerequisites
 
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
-- **MongoDB**: Community Server running on `mongodb://127.0.0.1:27017` (Local) or MongoDB Atlas (Cloud)
+- **Frontend:** Node.js (v18+) & npm (v9+)
+- **Backend:** Java Development Kit (JDK 17 or 21) & Apache Maven (v3.8+)
+- **Database:** PostgreSQL (v14+) or MySQL (v8.0+)
 
 ### 1. Install Dependencies
 
 ```bash
-# Install root dependencies
-npm install
-
 # Install frontend dependencies
-npm run install:frontend
+cd frontend && npm install
 ```
 
 ### 2. Environment Configuration
@@ -260,8 +241,8 @@ npm run install:frontend
 **Frontend (`frontend/.env`):**
 
 ```env
-VITE_API_URL=http://localhost:5000/api/v1
-VITE_API_BASE_URL=http://localhost:5000/api/v1
+VITE_API_URL=http://localhost:8080/api/v1
+VITE_API_BASE_URL=http://localhost:8080/api/v1
 ```
 
 ---
@@ -299,7 +280,7 @@ The application is configured for seamless local development and production-read
 
 ## ☁️ 12. Deploying to Render (Step-by-Step)
 
-The project includes pre-configured Render infrastructure configuration files (`render.yaml` and `server.js`) for zero-configuration, one-click deployments:
+The project includes pre-configured Render infrastructure configuration files (`render.yaml`) for zero-configuration, one-click deployments:
 
 ### Method 1: Render Static Site (Recommended — Fast & 100% Free)
 
@@ -324,11 +305,11 @@ The project includes pre-configured Render infrastructure configuration files (`
 3. Render automatically parses `render.yaml` and sets up the Static Site, build commands, and SPA routing rewrites with zero manual entry.
 4. Click **Apply** to deploy.
 
-### Method 3: Render Web Service (Node.js Fallback)
+### Method 3: Backend Deployment (Java Spring Boot Service)
 
-If deploying as a Node.js Web Service instead of a Static Site:
-- **Build Command:** `npm run build`
-- **Start Command:** `npm start` (runs production `server.js` listening on `0.0.0.0:${PORT}`)
+If deploying the Spring Boot backend as a Render Web Service:
+- **Build Command:** `mvn clean package -DskipTests`
+- **Start Command:** `java -jar target/placetrack-backend-1.0.0.jar`
 
 ---
 
@@ -336,8 +317,8 @@ If deploying as a Node.js Web Service instead of a Static Site:
 
 | Module        | Endpoints                                                                                                                                  | Access Level        | Description                                                     |
 | :------------ | :----------------------------------------------------------------------------------------------------------------------------------------- | :------------------ | :-------------------------------------------------------------- |
-| **Health**    | `GET /health`                                                                                                                              | Public              | System uptime & MongoDB connection status                       |
-| **Auth**      | `POST /auth/register`<br>`POST /auth/login`<br>`GET /auth/me`                                                                              | Public / Protected  | User authentication & session restoration                       |
+| **Health**    | `GET /api/v1/health` &middot; `GET /actuator/health`                                                                                       | Public              | System uptime, database connection & Spring Boot Actuator probe |
+| **Auth**      | `POST /auth/register`<br>`POST /auth/login`<br>`GET /auth/me`                                                                              | Public / Protected  | User authentication & JWT session restoration                   |
 | **Student**   | `GET /student/dashboard`<br>`GET /student/opportunities`<br>`POST /student/apply/:id`<br>`POST /student/resume`                            | Student Protected   | Student profile, eligibility query, applications, resume upload |
 | **Recruiter** | `GET /recruiter/dashboard`<br>`POST /recruiter/jobs`<br>`GET /recruiter/candidates`<br>`POST /recruiter/candidates/:id/schedule-interview` | Recruiter Protected | Job management, applicant review, interview scheduling          |
 | **TPO**       | `GET /tpo/dashboard`<br>`GET /tpo/students`<br>`PUT /tpo/companies/:id/verify`<br>`GET /tpo/reports/:type`                                 | TPO Protected       | University administration, analytics, 5 CSV reports             |
@@ -347,7 +328,6 @@ If deploying as a Node.js Web Service instead of a Static Site:
 
 ## 📄 14. Documentation Links
 
-- [System Design Document (Markdown)](docs/system-design-document.md)
 - [PlaceTrack System Design Document (Word Docx)](PlaceTrack%20-%20System%20Design%20Document.docx)
 
 ---
