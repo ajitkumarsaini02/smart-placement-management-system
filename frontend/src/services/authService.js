@@ -50,7 +50,7 @@ export const authService = {
       if (data?.user) return { success: true, user: data.user };
     } catch {}
     const stored = localStorage.getItem('placetrack_user');
-    return { success: true, user: stored ? JSON.parse(stored) : mockUsers[0] };
+    return { success: !!stored, user: stored ? JSON.parse(stored) : null };
   },
 
   async logout() {

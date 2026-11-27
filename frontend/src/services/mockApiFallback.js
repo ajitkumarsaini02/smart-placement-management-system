@@ -3,13 +3,7 @@ import { mockUsers } from '../data/mockUsers';
 
 export const handleMockFallback = (config) => {
   const url = config.url || '';
-  const wrap = (data) => ({
-    data: { success: true, ...data, data },
-    status: 200,
-    statusText: 'OK',
-    headers: {},
-    config,
-  });
+  const wrap = (data) => ({ data: { success: true, ...data, data }, status: 200, statusText: 'OK', headers: {}, config });
 
   if (url.includes('/auth/login')) {
     let body = {};
@@ -17,10 +11,7 @@ export const handleMockFallback = (config) => {
     const email = (body.email || '').toLowerCase().trim();
     let user = mockUsers.find((u) => u.email.toLowerCase() === email);
     if (!user) {
-      let role = 'student';
-      if (email.includes('recruiter') || email.includes('company')) role = 'recruiter';
-      else if (email.includes('tpo') || email.includes('college')) role = 'tpo';
-      else if (email.includes('admin')) role = 'admin';
+      let role = email.includes('recruiter') ? 'recruiter' : email.includes('tpo') ? 'tpo' : email.includes('admin') ? 'admin' : 'student';
       user = { _id: `user_${Date.now()}`, name: email ? email.split('@')[0] : 'Demo User', email: email || `${role}@placetrack.com`, role, isVerified: true };
     }
     return wrap({ success: true, token: `mock_jwt_token_${user.role}_${Date.now()}`, user });
@@ -28,43 +19,37 @@ export const handleMockFallback = (config) => {
 
   if (url.includes('/auth/me')) {
     const stored = localStorage.getItem('placetrack_user');
-    return wrap({ success: true, user: stored ? JSON.parse(stored) : mockUsers[0] });
+    return wrap({ success: !!stored, user: stored ? JSON.parse(stored) : null });
   }
 
   if (url.includes('/student/dashboard')) {
-    const apps = mockStore.getApplications();
+    const std = mockStore.getStudent(), apps = mockStore.getApplications(), jobs = mockStore.getJobs();
+    const statsData = { profileCompletion: 85, appliedCount: apps.length, shortlistedCount: 1, interviewsCount: 1, offersCount: 1 };
     return wrap({
-      profile: mockStore.getStudent(),
-      stats: { appliedCount: apps.length, shortlistedCount: apps.filter(a => a.status === 'shortlisted').length, interviewsCount: apps.filter(a => a.status === 'interview_scheduled').length, offersCount: apps.filter(a => a.status === 'selected').length },
-      recentApplications: apps.slice(0, 5),
-      recommendedJobs: mockStore.getJobs().slice(0, 3),
+      student: std, profile: std, metrics: statsData, stats: statsData,
+      eligibleJobs: jobs.slice(0, 4), recommendedJobs: jobs.slice(0, 4),
+      upcomingDrives: mockStore.getDrives().slice(0, 3), recentApplications: apps.slice(0, 5), recentNotifications: mockStore.getNotifications().slice(0, 5)
     });
   }
 
   if (url.includes('/tpo/dashboard') || url.includes('/tpo/analytics')) {
-    return wrap({
-      stats: { totalStudents: 450, totalCompanies: 65, activeJobs: 28, campusDrives: 14, totalApplications: 1240, placedStudents: 382, placementRate: 84.8, avgPackage: '7.8 LPA', highestPackage: '44.0 LPA' },
-      recentDrives: mockStore.getDrives(),
-      recentApplications: mockStore.getApplications().slice(0, 5),
-    });
+    const statsObj = { totalStudents: 450, totalCompanies: 65, activeJobs: 28, campusDrives: 14, totalApplications: 1240, placedStudents: 382, placementRate: 84.8, avgPackage: '7.8 LPA', highestPackage: '44.0 LPA' };
+    return wrap({ statistics: statsObj, stats: statsObj, recentDrives: mockStore.getDrives(), recentApplications: mockStore.getApplications().slice(0, 5), recentStudents: mockStore.getStudents().slice(0, 5) });
   }
 
   if (url.includes('/recruiter/dashboard')) {
-    return wrap({
-      stats: { totalJobs: 4, activeCandidates: 28, shortlisted: 12, scheduledInterviews: 6 },
-      jobs: mockStore.getJobs().slice(0, 3),
-      recentCandidates: mockStore.getStudents().slice(0, 5),
-    });
+    const jobs = mockStore.getJobs(), apps = mockStore.getApplications();
+    const statsObj = { totalJobs: jobs.length, activeJobs: jobs.filter(j => j.status === 'published').length, totalApplicants: apps.length, shortlisted: 3, interviewsScheduled: 2, selected: 1 };
+    return wrap({ company: mockStore.getCompanies()[0] || { name: 'Google Cloud India', isVerified: true }, stats: statsObj, jobs: jobs.slice(0, 3), recentCandidates: mockStore.getStudents().slice(0, 5), recentApplicants: apps.slice(0, 5) });
   }
 
   if (url.includes('/applications')) return wrap({ applications: mockStore.getApplications() });
   if (url.includes('/profile') || url.includes('/students/me')) return wrap({ student: mockStore.getStudent() });
   if (url.includes('/jobs')) return wrap({ jobs: mockStore.getJobs() });
   if (url.includes('/notifications')) return wrap({ notifications: mockStore.getNotifications() });
-  if (url.includes('/students')) return wrap({ students: mockStore.getStudents() });
+  if (url.includes('/students') || url.includes('/candidates')) return wrap({ students: mockStore.getStudents(), candidates: mockStore.getStudents() });
   if (url.includes('/companies')) return wrap({ companies: mockStore.getCompanies() });
   if (url.includes('/drives')) return wrap({ drives: mockStore.getDrives() });
-  if (url.includes('/candidates')) return wrap({ candidates: mockStore.getStudents() });
 
   return wrap({});
 };

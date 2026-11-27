@@ -26,10 +26,23 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const init = async () => {
+      const storedToken = localStorage.getItem('placetrack_token');
+      const storedUser = localStorage.getItem('placetrack_user');
+      if (!storedToken || !storedUser) {
+        setUser(null);
+        setToken(null);
+        setLoading(false);
+        return;
+      }
       try {
         const res = await authService.getMe();
         if (res?.user) setUser(res.user);
-      } catch { setUser(null); } finally { setLoading(false); }
+        else { setUser(null); setToken(null); }
+      } catch {
+        setUser(storedUser ? JSON.parse(storedUser) : null);
+      } finally {
+        setLoading(false);
+      }
     };
     init();
   }, []);

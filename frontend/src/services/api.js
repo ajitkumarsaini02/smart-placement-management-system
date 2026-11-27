@@ -25,11 +25,21 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    if (
+      typeof response.data === 'string' &&
+      (response.data.includes('<!DOCTYPE') || response.data.includes('<html'))
+    ) {
+      const fallback = handleMockFallback(response.config || {});
+      if (fallback) return fallback;
+    }
+    return response;
+  },
   (error) => {
-    // Graceful fallback to local mock store when backend is offline
     if (
       !error.response ||
+      error.response.status === 404 ||
+      error.response.status >= 500 ||
       error.code === 'ERR_NETWORK' ||
       error.message?.includes('Network Error') ||
       error.message?.includes('timeout')
@@ -45,18 +55,6 @@ api.interceptors.response.use(
       error.response?.data?.error ||
       error.message ||
       'An unexpected network error occurred';
-
-    if (error.response?.status === 401) {
-      const currentPath = window.location.pathname;
-      if (
-        currentPath.startsWith('/student') ||
-        currentPath.startsWith('/tpo') ||
-        currentPath.startsWith('/recruiter')
-      ) {
-        localStorage.removeItem('placetrack_token');
-        localStorage.removeItem('placetrack_user');
-      }
-    }
 
     return Promise.reject(new Error(message));
   }
