@@ -1,8 +1,9 @@
-import React from "react";
-import { ArrowRight } from "lucide-react";
-import workflowSteps from "./workflowSteps";
+import React from 'react';
+import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
+import workflowSteps from './workflowSteps';
+import WorkflowStagePreview from './WorkflowStagePreview';
 
-const WorkflowContentCard = ({ activeStep, onNextStep }) => {
+const WorkflowContentCard = ({ activeStep, onNextStep, onPrevStep }) => {
   const current = workflowSteps[activeStep];
 
   return (
@@ -14,50 +15,42 @@ const WorkflowContentCard = ({ activeStep, onNextStep }) => {
         </div>
         <h3 className="workflow-headline">{current.headline}</h3>
         <p className="workflow-desc">{current.desc}</p>
+
         <ul className="workflow-bullet-list">
           {current.bullets.map((b, i) => (
             <li key={i} className="workflow-bullet-item">
-              <span className="workflow-bullet-check">✓</span>
+              <CheckCircle2 size={18} className="workflow-bullet-check" />
               <span>{b}</span>
             </li>
           ))}
         </ul>
+
+        <div className="workflow-navigation-actions">
+          <button
+            type="button"
+            className="workflow-nav-arrow-btn"
+            onClick={onPrevStep}
+            disabled={activeStep === 0}
+            title="Previous Stage"
+          >
+            <ArrowLeft size={16} /> Previous
+          </button>
+          <div className="workflow-step-counter">
+            Stage <strong>{activeStep + 1}</strong> of <strong>{workflowSteps.length}</strong>
+          </div>
+          <button
+            type="button"
+            className="workflow-nav-arrow-btn workflow-nav-next"
+            onClick={onNextStep}
+            title="Next Stage"
+          >
+            Next <ArrowRight size={16} />
+          </button>
+        </div>
       </div>
 
       <div className="workflow-card-right">
-        <div className="workflow-visual-preview">
-          <div className="visual-top">
-            <div className="visual-icon-box">{current.icon}</div>
-            <div>
-              <span className="visual-label">Placement Stage Active</span>
-              <h4 className="visual-title">{current.title}</h4>
-            </div>
-          </div>
-          <div className="visual-status-box">
-            <span className="status-label">Process Compliance</span>
-            <span className="status-badge-green">
-              100% Digital &amp; Auditable
-            </span>
-          </div>
-          <div className="visual-progress-bar">
-            <div
-              className="visual-progress-fill"
-              style={{
-                width: `${((activeStep + 1) / workflowSteps.length) * 100}%`,
-              }}
-            />
-          </div>
-          <div className="visual-footer">
-            <span>Step {activeStep + 1} of 7</span>
-            <button
-              type="button"
-              className="visual-next-btn"
-              onClick={onNextStep}
-            >
-              Next Stage <ArrowRight size={14} />
-            </button>
-          </div>
-        </div>
+        <WorkflowStagePreview activeStep={activeStep} current={current} />
       </div>
     </div>
   );

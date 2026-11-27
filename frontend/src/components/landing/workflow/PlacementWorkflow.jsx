@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import WorkflowHeader from "./WorkflowHeader";
-import WorkflowStepsNav from "./WorkflowStepsNav";
-import WorkflowContentCard from "./WorkflowContentCard";
-import workflowSteps from "./workflowSteps";
+import React, { useState } from 'react';
+import WorkflowHeader from './WorkflowHeader';
+import WorkflowStepsNav from './WorkflowStepsNav';
+import WorkflowContentCard from './WorkflowContentCard';
+import workflowSteps from './workflowSteps';
 
 const PlacementWorkflow = () => {
   const [activeStep, setActiveStep] = useState(0);
+
+  const handleNext = () => setActiveStep((prev) => (prev + 1) % workflowSteps.length);
+  const handlePrev = () => setActiveStep((prev) => (prev - 1 + workflowSteps.length) % workflowSteps.length);
 
   return (
     <section className="section workflow-section" id="workflow">
@@ -14,7 +17,8 @@ const PlacementWorkflow = () => {
         <WorkflowStepsNav activeStep={activeStep} onSelectStep={setActiveStep} />
         <WorkflowContentCard
           activeStep={activeStep}
-          onNextStep={() => setActiveStep((activeStep + 1) % workflowSteps.length)}
+          onNextStep={handleNext}
+          onPrevStep={handlePrev}
         />
       </div>
     </section>
