@@ -2441,17 +2441,17 @@
   color: var(--color-text-secondary, #64756C);
 }
 
-.footer-links {
+.student-footer .footer-links {
   display: flex;
   gap: 1rem;
 }
 
-.footer-links a {
+.student-footer .footer-links a {
   color: var(--color-text-secondary, #64756C);
   text-decoration: none;
 }
 
-.footer-links a:hover {
+.student-footer .footer-links a:hover {
   color: var(--color-primary, #047857);
 }
 

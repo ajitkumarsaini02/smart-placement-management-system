@@ -2687,6 +2687,24 @@
   gap: 10px;
 }
 
+.footer-link,
+.footer .footer-links a {
+  font-size: 0.88rem;
+  color: #D1FAE5 !important;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.footer-link:hover,
+.footer .footer-links a:hover {
+  color: #FFFFFF !important;
+  opacity: 1;
+  text-decoration: none;
+  transform: translateX(4px);
+}
+
 .footer-static-item {
   font-size: 0.85rem;
   color: #D1FAE5;
