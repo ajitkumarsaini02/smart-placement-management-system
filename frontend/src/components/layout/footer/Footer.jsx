@@ -14,7 +14,6 @@ const Footer = () => {
               <div className="footer-logo-icon"><Briefcase size={20} /></div>
               <span className="footer-brand-name">Place<span className="footer-brand-highlight">Track</span></span>
             </a>
-            <p className="footer-institution">ABESEC Ghaziabad</p>
             <p className="footer-tagline">Your Career. Your Placement. One Smart Platform.</p>
             <p className="footer-description">
               A centralized campus placement management platform streamlining the recruitment journey for students, training & placement cells, and global corporate hiring teams.
@@ -39,7 +38,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-credits">
             <p className="footer-dev-by">
-              Developed &amp; Maintained By: Ajit Kumar Saini, Aditya Yadav (CSE-11)
+              Developed &amp; Maintained By: <span>Ajit Kumar Saini, Aditya Yadav (CSE-11)</span>
             </p>
             <p className="footer-team-badge">Full Stack Development Team</p>
             <p className="footer-copyright">
